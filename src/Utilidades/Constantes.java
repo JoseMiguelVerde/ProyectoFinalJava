@@ -43,6 +43,48 @@ public class Constantes {
 		
 	}
 	
+	public enum Puesto{
+		EMPLEADO(1,"Empleado",300f),GERENTE(2,"Gerente",600f);
+		
+		private int idPuesto;
+		private String puesto;
+		private float sueldo;
+		
+		private Puesto(int idEmpleado, String puesto, float sueldo)
+		{
+			this.idPuesto=idEmpleado;
+			this.puesto=puesto;
+			this.sueldo=sueldo;
+		}
+
+		public int getIdPuesto() {
+			return idPuesto;
+		}
+
+		public String getPuesto() {
+			return puesto;
+		}
+
+		public float getSueldo() {
+			return sueldo;
+		}
+		
+		
+	}
+	
+	public enum Tipo{
+		PERCEPCION(1,"Percepción"),DEDUCCION(2,"Deducción");
+		
+		private int idTipo;
+		private String nombreTipo;
+		
+		private Tipo(int idTipo, String nombreTipo) 
+		{
+			this.idTipo=idTipo;
+			this.nombreTipo=nombreTipo;
+		}
+	}
+	
 	public enum Bonos{
 		PUNTUALIDAD(0,"Puntualidad",400f),EFICIENCIA(1,"Eficiencia",600f),COMISION_VENTA(2,"Comisión",500f);
 		private int idBono;
