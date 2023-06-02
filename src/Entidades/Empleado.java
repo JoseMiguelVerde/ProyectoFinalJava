@@ -15,11 +15,11 @@ public class Empleado {
 	private static int siguienteId=1;
 	
 
-	public Empleado(String nombreCompleto, String rfc, String curp, String direccion, Generos genero, LocalDateTime fechaNacimiento, Movimientos movimiento) {
+	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDateTime fechaNacimiento, Movimientos movimiento) {
 
 		this.id=siguienteId;
 		this.nombreCompleto=nombreCompleto;
-		this.puesto=puesto.EMPLEADO;
+		this.puesto=puesto;
 		this.rfc=rfc;
 		this.curp=curp;
 		this.direccion=direccion;
