@@ -43,6 +43,29 @@ public class Constantes {
 		
 	}
 	
+	public enum Estatus{
+		ACTIVO(1,"Activo"), BAJA(2,"Baja");
+		
+		private int idEstatus;
+		private String estatus;
+		
+		private Estatus(int idEstatus, String estatus) 
+		{
+			this.idEstatus=idEstatus;
+			this.estatus=estatus;
+		}
+
+		public int getIdEstatus() {
+			return idEstatus;
+		}
+
+		public String getEstatus() {
+			return estatus;
+		}
+		
+		
+	}
+	
 	public enum Puesto{
 		EMPLEADO(1,"Empleado",300f),GERENTE(2,"Gerente",600f);
 		
@@ -83,6 +106,16 @@ public class Constantes {
 			this.idTipo=idTipo;
 			this.nombreTipo=nombreTipo;
 		}
+
+		public int getIdTipo() {
+			return idTipo;
+		}
+
+		public String getNombreTipo() {
+			return nombreTipo;
+		}
+		
+		
 	}
 	
 	public enum Bonos{
