@@ -3,9 +3,10 @@ package Entidades;
 import java.time.LocalDateTime;
 
 import Utilidades.Constantes.*;
-
+import Datos.ManipulacionArreglo;
 public class Empleado {
 	
+	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
 	private int id;
 	private String nombreCompleto, rfc, curp, direccion;
 	private Puesto puesto;
@@ -17,7 +18,7 @@ public class Empleado {
 
 	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDateTime fechaNacimiento, Movimientos movimiento) {
 
-		this.id=siguienteId;
+		this.id=manipulacion.dameIdEmpleados();
 		this.nombreCompleto=nombreCompleto;
 		this.puesto=puesto;
 		this.rfc=rfc;
@@ -27,10 +28,7 @@ public class Empleado {
 		estatus=estatus.ACTIVO;
 		this.fechaNacimiento=fechaNacimiento;
 		this.fechaContratacion=LocalDateTime.now();
-		if(movimiento==Movimientos.INSERCION)
-		{
-			siguienteId++;
-		}
+		
 	}
 	
 
@@ -134,6 +132,5 @@ public class Empleado {
 	public void setFechaContratacion(LocalDateTime fechaContratacion) {
 		this.fechaContratacion = fechaContratacion;
 	}
-	
 	
 }

@@ -118,29 +118,55 @@ public class Constantes {
 		
 	}
 	
-	public enum Bonos{
-		PUNTUALIDAD(0,"Puntualidad",400f),EFICIENCIA(1,"Eficiencia",600f),COMISION_VENTA(2,"Comisión",500f);
-		private int idBono;
-		private String nombreBono;
-		private float costoBono;
+	public enum Percepcion{
+		COMISION(0,"Comision",3),BONO(1,"Bono",5),PRIMA_VACACIONAL(2,"Prima Vacasional",25); // el 3, 5 y 25 son los porcentajes de cada percepcion
+		private int idPercepcion;
+		private String nombrePercepcion;
+		private int porcentajeDeLaPercepcion;
 		
-		private Bonos(int idBono,String nombreBono,float costoBono)
+		private Percepcion(int idPercepcion,String nombrePercepcion,int porcentajeDeLaPercepcion)
 		{
-			this.idBono=idBono;
-			this.nombreBono=nombreBono;
-			this.costoBono=costoBono;
+			this.idPercepcion=idPercepcion;
+			this.nombrePercepcion=nombrePercepcion;
+			this.porcentajeDeLaPercepcion=porcentajeDeLaPercepcion;
 		}
 
-		public int getIdBono() {
-			return idBono;
+		public int getIdPercepcion() {
+			return idPercepcion;
 		}
 
-		public String getNombreBono() {
-			return nombreBono;
+		public String getNombrePercepcion() {
+			return nombrePercepcion;
 		}
 
-		public float getCostoBono() {
-			return costoBono;
+		public float getPorcentajeDeLaPercepcion() {
+			return porcentajeDeLaPercepcion;
+		}
+		
+	}
+	public enum Deduccion{
+		FORMACION_PROFESIONAL(0,"Formacion Profecional",2f),CONTINGENCIA_COMUN(1,"Contingencia Comun",4f),SEGURO_MEDICO(2,"Seguro Medico",4.5f); // el 2, 4 y 4.5 son los porcentajes de cada percepcion
+		private int idDeduccion;
+		private String nombreDeduccion;
+		private float porcentajeDeLaDeduccion;
+		
+		private Deduccion(int idDeduccion,String nombreDeduccion,float porcentajeDeLaDeduccion)
+		{
+			this.idDeduccion=idDeduccion;
+			this.nombreDeduccion=nombreDeduccion;
+			this.porcentajeDeLaDeduccion=porcentajeDeLaDeduccion;
+		}
+
+		public int getIdDeduccion() {
+			return idDeduccion;
+		}
+
+		public String getNombreDeduccion() {
+			return nombreDeduccion;
+		}
+
+		public float getPorcentajeDeLaDeduccion() {
+			return porcentajeDeLaDeduccion;
 		}
 		
 	}

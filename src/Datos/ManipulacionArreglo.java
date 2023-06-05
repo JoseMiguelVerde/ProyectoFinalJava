@@ -4,6 +4,9 @@ import Entidades.Empleado;
 
 public class ManipulacionArreglo {
 	private String[][] listaEmpleados=new String[8][7];
+	private String[][] listaPercepciones=new String[8][6];
+	private String[][] listaDeducciones=new String[8][6];
+	
 	private int buscaEspacio() {
 		int indice=-1;
 		for(int i=0;i<listaEmpleados.length;i++) {
@@ -15,7 +18,7 @@ public class ManipulacionArreglo {
 		}
 		return indice;
 	}
-	private int dameIndice() {
+	public int dameIdEmpleados() {
 		int indice=0, id=0;
 		for(int i=0;i<listaEmpleados.length;i++) {
 			if(listaEmpleados[i][0]!=null)
@@ -23,6 +26,34 @@ public class ManipulacionArreglo {
 				if(Integer.parseInt(listaEmpleados[i][0])>indice)
 				{
 					indice=Integer.parseInt(listaEmpleados[i][0]);
+				}			
+			}
+		}
+		id=indice+1;
+		return id;
+	}
+	public int dameIdPercepcion() {
+		int indice=0, id=0;
+		for(int i=0;i<listaPercepciones.length;i++) {
+			if(listaPercepciones[i][0]!=null)
+			{
+				if(Integer.parseInt(listaPercepciones[i][0])>indice)
+				{
+					indice=Integer.parseInt(listaPercepciones[i][0]);
+				}			
+			}
+		}
+		id=indice+1;
+		return id;
+	}
+	public int dameIdDeducciones() {
+		int indice=0, id=0;
+		for(int i=0;i<listaDeducciones.length;i++) {
+			if(listaDeducciones[i][0]!=null)
+			{
+				if(Integer.parseInt(listaDeducciones[i][0])>indice)
+				{
+					indice=Integer.parseInt(listaDeducciones[i][0]);
 				}			
 			}
 		}
