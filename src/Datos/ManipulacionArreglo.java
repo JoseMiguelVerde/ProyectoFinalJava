@@ -2,17 +2,19 @@ package Datos;
 
 import Entidades.Empleado;
 import Entidades.Gerente;
-
+import Entidades.Percepciones;
+import Entidades.Deducciones;
+import Entidades.Nomina;
 public class ManipulacionArreglo {
-	private String[][] listaEmpleados=new String[10][10];
-	private String[][] listaPercepciones=new String[8][6];
-	private String[][] listaDeducciones=new String[8][6];
-	private String[][] arregloNomina=new String[10][7];
+	private Empleado[] listaEmpleados=new Empleado[10];
+	private Percepciones[] listaPercepciones=new Percepciones[8];
+	private Deducciones[] listaDeducciones=new Deducciones[8];
+	private Nomina[] arregloNomina=new Nomina[10];
 	
 	private int buscaEspacio() {
 		int indice=-1;
 		for(int i=0;i<listaEmpleados.length;i++) {
-			if(listaEmpleados[i][0]==null)
+			if(listaEmpleados[i]==null)
 			{
 				indice=i;
 				break;
@@ -24,11 +26,11 @@ public class ManipulacionArreglo {
 	public int dameIdEmpleados() {
 		int indice=0, id=0;
 		for(int i=0;i<listaEmpleados.length;i++) {
-			if(listaEmpleados[i][0]!=null)
+			if(listaEmpleados[i]!=null)
 			{
-				if(Integer.parseInt(listaEmpleados[i][0])>indice)
+				if(listaEmpleados[i].getId()>indice)
 				{
-					indice=Integer.parseInt(listaEmpleados[i][0]);
+					indice=listaEmpleados[i].getId();
 				}			
 			}
 		}
@@ -39,11 +41,11 @@ public class ManipulacionArreglo {
 	public int dameIdPercepcion() {
 		int indice=0, id=0;
 		for(int i=0;i<listaPercepciones.length;i++) {
-			if(listaPercepciones[i][0]!=null)
+			if(listaPercepciones[i]!=null)
 			{
-				if(Integer.parseInt(listaPercepciones[i][0])>indice)
+				if(listaPercepciones[i].getIdPercepcion()>indice)
 				{
-					indice=Integer.parseInt(listaPercepciones[i][0]);
+					indice=listaPercepciones[i].getIdPercepcion();
 				}			
 			}
 		}
@@ -54,11 +56,11 @@ public class ManipulacionArreglo {
 	public int dameIdDeducciones() {
 		int indice=0, id=0;
 		for(int i=0;i<listaDeducciones.length;i++) {
-			if(listaDeducciones[i][0]!=null)
+			if(listaDeducciones[i]!=null)
 			{
-				if(Integer.parseInt(listaDeducciones[i][0])>indice)
+				if(listaDeducciones[i].getIdDeduccion()>indice)
 				{
-					indice=Integer.parseInt(listaDeducciones[i][0]);
+					indice=listaDeducciones[i].getIdDeduccion();
 				}			
 			}
 		}
@@ -69,12 +71,12 @@ public class ManipulacionArreglo {
 	public int dameIdNomina() {
 		int indice=0, id=0;
 		for(int i=0;i<arregloNomina.length;i++) {
-			if(arregloNomina[i][0]!=null)
+			if(arregloNomina[i]!=null)
 			{
-				if(Integer.parseInt(arregloNomina[i][0])>indice)
+				if(arregloNomina[i].getIdNomina()>indice)
 				{
 					
-					indice=Integer.parseInt(arregloNomina[i][0]);
+					indice=arregloNomina[i].getIdNomina();
 					
 				}			
 			}

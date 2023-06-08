@@ -5,6 +5,7 @@ import Datos.ManipulacionArreglo;
 import Utilidades.Constantes.Deduccion;
 
 public class Nomina {
+	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
 	private int idEmpleado;
 	private int idNomina;
 	private LocalDateTime fecha;
