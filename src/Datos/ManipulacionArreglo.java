@@ -111,5 +111,49 @@ public class ManipulacionArreglo {
 		return respuesta;
 	}
 	
+	public boolean eliminaEmpleadoConPercepcionesYDeducciones(int idEmpleado) {
+		boolean respuesta=false;
+
+		for (int i=0;i<listaEmpleados.length;i++) {
+			if(listaEmpleados[i]!=null)
+			{
+				if(listaEmpleados[i].getId()==idEmpleado)
+				{
+					respuesta=true;
+					for (int j=0;j<listaPercepciones.length;j++) {
+						if(listaPercepciones[j]!=null)
+						{
+							if(listaPercepciones[j].getIdEmpleado()==listaEmpleados[i].getId())
+							{
+								listaPercepciones[j]=null;
+								break;
+							}
+						}
+					}
+					for (int k=0;k<listaDeducciones.length;k++) {
+						if(listaDeducciones[k]!=null)
+						{
+							if(listaDeducciones[k].getIdEmpleado()==listaEmpleados[i].getId())
+							{
+								listaDeducciones[k]=null;
+								break;
+							}
+						}
+					}
+					if(respuesta==false) {
+						break;
+					}else {
+						if(respuesta==true) {
+							listaEmpleados[i]=null;
+							break;
+						}
+					}
+
+				}
+			}
+		}
+		return respuesta;
+	}
+	
 	
 }
