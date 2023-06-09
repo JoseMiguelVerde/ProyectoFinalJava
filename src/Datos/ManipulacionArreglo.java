@@ -104,16 +104,7 @@ public class ManipulacionArreglo {
 		 	
 			*/
 			
-			listaEmpleados[indice][0]=String.valueOf(datos.getId());
-			listaEmpleados[indice][1]=datos.getNombreCompleto();
-			listaEmpleados[indice][2]=(datos instanceof Gerente?"1":"0");
-			listaEmpleados[indice][3]=datos.getRfc();
-			listaEmpleados[indice][4]=datos.getCurp();
-			listaEmpleados[indice][5]=datos.getDireccion();
-			listaEmpleados[indice][6]=String.valueOf(datos.getGenero().getIdGenero());
-			listaEmpleados[indice][7]=String.valueOf(datos.getEstatus().getEstatus());
-			listaEmpleados[indice][8]=String.valueOf(datos.getFechaNacimiento());
-			listaEmpleados[indice][9]=String.valueOf(datos.getFechaContratacion());
+			listaEmpleados[indice]=datos;
 			respuesta=true;
 			
 		}
