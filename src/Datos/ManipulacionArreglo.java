@@ -3,9 +3,11 @@ package Datos;
 import Entidades.Empleado;
 import Entidades.Gerente;
 import Entidades.Percepciones;
+import Utilidades.Constantes.Estatus;
 import Entidades.Deducciones;
 import Entidades.Nomina;
 public class ManipulacionArreglo {
+	
 	private Empleado[] listaEmpleados=new Empleado[10];
 	private Percepciones[] listaPercepciones=new Percepciones[8];
 	private Deducciones[] listaDeducciones=new Deducciones[8];
@@ -111,7 +113,7 @@ public class ManipulacionArreglo {
 		return respuesta;
 	}
 	
-	public boolean eliminaEmpleadoConPercepcionesYDeducciones(int idEmpleado) {
+	public boolean bajaEmpleadoPorIdFisica(int idEmpleado) {
 		boolean respuesta=false;
 
 		for (int i=0;i<listaEmpleados.length;i++) {
@@ -152,6 +154,24 @@ public class ManipulacionArreglo {
 				}
 			}
 		}
+		return respuesta;
+	}
+	
+	public boolean bajaEmpleadoPorIdLogica(int idEmpleado) {
+		boolean respuesta=false;
+		
+		for (int i=0;i<listaEmpleados.length;i++) {
+			if(listaEmpleados[i]!=null)
+			{
+				if(listaEmpleados[i].getId()==idEmpleado)
+				{
+					respuesta=true;
+					listaEmpleados[i].setEstatus(Estatus.BAJA);
+					break;
+				}
+			}
+		}
+		
 		return respuesta;
 	}
 	
