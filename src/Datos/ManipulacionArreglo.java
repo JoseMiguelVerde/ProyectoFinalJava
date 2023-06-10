@@ -4,6 +4,11 @@ import Entidades.Empleado;
 import Entidades.Gerente;
 import Entidades.Percepciones;
 import Utilidades.Constantes.Estatus;
+import Utilidades.Constantes.Generos;
+import Utilidades.Constantes.Puesto;
+
+import java.time.LocalDateTime;
+
 import Entidades.Deducciones;
 import Entidades.Nomina;
 public class ManipulacionArreglo {
@@ -175,5 +180,60 @@ public class ManipulacionArreglo {
 		return respuesta;
 	}
 	
+	public boolean modificarPorIdEmpleado(int idEmpleado, String empleadoEditado, int datoAEditar) {
+		boolean respuesta=false;
+		
+		for (int i=0;i<listaEmpleados.length;i++) {
+			if(listaEmpleados[i]!=null)
+			{
+				if(listaEmpleados[i].getId()==idEmpleado)
+				{
+					switch(datoAEditar) {
+
+						case 1://nombreCompleto
+							listaEmpleados[i].setNombreCompleto(String.valueOf(empleadoEditado));
+							respuesta=true;
+							break;
+	
+						case 2://puesto
+							listaEmpleados[i].setPuesto(Puesto.valueOf(empleadoEditado));
+							respuesta=true;
+							break;
+	
+						case 3://rfc
+							listaEmpleados[i].setRfc(empleadoEditado);
+							respuesta=true;
+							break;
+	
+						case 4://curp
+							listaEmpleados[i].setCurp(empleadoEditado);
+							respuesta=true;
+							break;
+	
+						case 5://direccion
+							listaEmpleados[i].setDireccion(empleadoEditado);
+							respuesta=true;
+							break;
+	
+						case 6://genero
+							listaEmpleados[i].setGenero(Generos.valueOf(empleadoEditado));
+							respuesta=true;
+							break;
+	
+						case 7://fechaNacimiento
+							listaEmpleados[i].setFechaNacimiento(LocalDateTime.parse(empleadoEditado));
+							respuesta=true;
+							break;
+
+					}
+					break;
+				}
+			}
+		}
+		
+		
+		
+		return respuesta;
+	}
 	
 }
