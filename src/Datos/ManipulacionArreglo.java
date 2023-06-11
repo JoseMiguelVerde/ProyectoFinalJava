@@ -20,15 +20,49 @@ public class ManipulacionArreglo {
 	private Deducciones[] listaDeducciones=new Deducciones[8];
 	private Nomina[] arregloNomina=new Nomina[10];
 	
-	private int buscaEspacio() {
+	private int buscaEspacio(int arreglo) {
 		int indice=-1;
-		for(int i=0;i<listaEmpleados.length;i++) {
-			if(listaEmpleados[i]==null)
-			{
-				indice=i;
-				break;
+		//1 es lista empleados
+		if(arreglo==1) {
+			for(int i=0;i<listaEmpleados.length;i++) {
+				if(listaEmpleados[i]==null)
+				{
+					indice=i;
+					break;
+				}
 			}
 		}
+		//2 es lista Percepciones
+		if(arreglo==2) {
+			for(int i=0;i<listaPercepciones.length;i++) {
+				if(listaPercepciones[i]==null)
+				{
+					indice=i;
+					break;
+				}
+			}
+		}
+		//3 es lista deducciones
+		if(arreglo==3) {
+			for(int i=0;i<listaDeducciones.length;i++) {
+				if(listaDeducciones[i]==null)
+				{
+					indice=i;
+					break;
+				}
+			}
+		}
+		//4 es nomina
+		if(arreglo==4) {
+			for(int i=0;i<arregloNomina.length;i++) {
+				if(arregloNomina[i]==null)
+				{
+					indice=i;
+					break;
+				}
+			}
+		}
+		
 		return indice;
 	}
 	
@@ -96,7 +130,7 @@ public class ManipulacionArreglo {
 	
 	public boolean guardaEmpleado(Empleado datos) {
 		boolean respuesta=false;
-		int indice=buscaEspacio();
+		int indice=buscaEspacio(1);
 		if(indice!=-1)
 		{	
 			listaEmpleados[indice]=datos;
@@ -482,6 +516,28 @@ public class ManipulacionArreglo {
 				}
 			}
 		}	
+		return respuesta;
+	}
+	public boolean guardaDeduccion(Deducciones datos) {
+		boolean respuesta=false;
+		int indice=buscaEspacio(3);
+		if(indice!=-1)
+		{	
+			listaDeducciones[indice]=datos;
+			respuesta=true;
+			
+		}
+		return respuesta;
+	}
+	public boolean guardaPercepcion(Percepciones datos) {
+		boolean respuesta=false;
+		int indice=buscaEspacio(2);
+		if(indice!=-1)
+		{	
+			listaPercepciones[indice]=datos;
+			respuesta=true;
+			
+		}
 		return respuesta;
 	}
 }
