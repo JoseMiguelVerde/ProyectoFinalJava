@@ -61,6 +61,430 @@ package Datos;
 import java.io.*;
 import java.nio.charset.Charset;
 
-public class Archivos {
+import Entidades.Deducciones;
+import Entidades.Empleado;
+import Entidades.Percepciones;
+import Utilidades.Constantes;
+import Utilidades.Constantes.*;
 
+public class Archivos {
+	
+	File listaEmpleados=new File("lista_empleados.txt");
+	File listaPercepciones=new File("lista_percepciones.txt");
+	File listaDeducciones=new File("lista_deducciones.txt");
+	File listaNomina=new File("lista_nomina.txt");
+	
+	public Archivos(){
+		
+		if(!listaEmpleados.exists())
+		{
+			
+			try {
+				
+				listaEmpleados.createNewFile();
+				
+			} catch (IOException e) {
+				
+				throw new RuntimeException("Error al intentar crear el archivo lista_empleados.txt");
+				
+			}
+			
+		}
+		
+		if(!listaPercepciones.exists())
+		{
+			
+			try {
+				
+				listaPercepciones.createNewFile();
+				
+			} catch (IOException e) {
+				
+				throw new RuntimeException("Error al intentar crear el archivo lista_percepciones.txt");
+				
+			}
+			
+		}
+		
+		if(!listaDeducciones.exists())
+		{
+			
+			try {
+				
+				listaDeducciones.createNewFile();
+				
+			} catch (IOException e) {
+				
+				throw new RuntimeException("Error al intentar crear el archivo lista_deducciones.txt");
+				
+			}
+			
+		}
+		
+		if(!listaNomina.exists())
+		{
+			
+			try {
+				
+				listaNomina.createNewFile();
+				
+			} catch (IOException e) {
+				
+				throw new RuntimeException("Error al intentar crear el archivo lista_nomina.txt");
+				
+			}
+			
+		}
+	}
+	
+	
+	public boolean guardaEmpleado(Empleado datos) {
+		boolean respuesta=false;
+		
+		try {
+			
+			FileWriter archivo=new FileWriter("lista_empleados.txt",true);
+			
+			archivo.write(String.valueOf(datos.getId()) + "|" + datos.getNombreCompleto() + "|" + datos.getPuesto().getIdPuesto() + "|" + datos.getRfc() + "|" + datos.getCurp() + "|" + datos.getDireccion() + "|" + datos.getGenero().getIdGenero() + "|" + datos.getEstatus() + "|" + datos.getFechaNacimiento().toString() + "|" + datos.getFechaContratacion().toString() + "\n");
+			
+			archivo.close();
+			respuesta=true;
+			
+		}catch(IOException ex) {
+			
+			System.out.println("No se ha encontrado el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public String mostrarTodosEmpledos() {
+		String respuesta=Constantes.CABECERA_EMPLEADO;
+
+		try {
+
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					respuesta+= linea.replace('|', '\t')+"\n";
+				
+				}
+				
+			}
+			archivoLectura.close();
+		
+		}catch(IOException ex) {
+			
+			System.out.println("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public String[] buscarEnListaEmpleados(BuscarPor tipo, Object valor) {
+		String[] respuesta=null;
+		int contador=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[0])==(Integer)valor)
+					{
+						
+						contador++;
+						
+					}
+					
+					if(tipo==BuscarPor.NOMBRE && auxiliar[1].equalsIgnoreCase((String)valor))
+					{
+
+						contador++;
+
+					}
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		//----------------------------------------------------------------------
+		
+		if(contador>0)
+		{
+			
+			respuesta=new String[contador];
+			int j=0;
+			
+			try {
+				
+				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+				BufferedReader memoria=new BufferedReader(archivoLectura);
+				
+				String linea="";
+				while(linea!=null) {
+					
+					linea=memoria.readLine();
+					if(linea!=null)
+					{
+						
+						String[] auxiliar=linea.split("\\|");
+						if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[0])==(Integer)valor)
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9];
+							j++;
+							
+						}
+						
+						if (tipo==BuscarPor. NOMBRE && auxiliar [1].equalsIgnoreCase((String)valor))
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9];
+							j++;
+							
+						}
+						
+					}
+					
+				}
+				archivoLectura.close();
+				
+			}catch(IOException ex) {
+				
+				throw new RuntimeException("Error al intentar leer el archivo.");
+				
+			}
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean agregarDeduccion(Deducciones datos) {
+		boolean respuesta=false;
+		
+		try {
+			
+			FileWriter archivo=new FileWriter("lista_deducciones.txt",true);
+			
+			archivo.write(String.valueOf(datos.getIdDeduccion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoDeduccion().getIdDeduccion() + "\n");
+			
+			archivo.close();
+			respuesta=true;
+			
+		}catch(IOException ex) {
+			
+			System.out.println("No se ha encontrado el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+
+	public String[] buscarDeduccion(BuscarPor tipo, Object valor) {
+		String[] respuesta=null;
+		int contador=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[1])==(Integer)valor)
+					{
+						
+						contador++;
+						
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		//----------------------------------------------------------------------
+		
+		if(contador>0)
+		{
+			
+			respuesta=new String[contador];
+			int j=0;
+			
+			try {
+				
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+				BufferedReader memoria=new BufferedReader(archivoLectura);
+				
+				String linea="";
+				while(linea!=null) {
+					
+					linea=memoria.readLine();
+					if(linea!=null)
+					{
+						
+						String[] auxiliar=linea.split("\\|");
+						if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[1])==(Integer)valor)
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "\n";
+							j++;
+							
+						}
+						
+					}
+					
+				}
+				archivoLectura.close();
+				
+			}catch(IOException ex) {
+				
+				throw new RuntimeException("Error al intentar leer el archivo.");
+				
+			}
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean agregarPercepcion(Percepciones datos) {
+		boolean respuesta=false;
+		
+		try {
+			
+			FileWriter archivo=new FileWriter("lista_percepciones.txt",true);
+			
+			archivo.write(String.valueOf(datos.getIdPercepcion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoPercepcion().getIdPercepcion() + "\n");
+			
+			archivo.close();
+			respuesta=true;
+			
+		}catch(IOException ex) {
+			
+			System.out.println("No se ha encontrado el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public String[] buscarPercepcion(BuscarPor tipo, Object valor) {
+		String[] respuesta=null;
+		int contador=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[1])==(Integer)valor)
+					{
+						
+						contador++;
+						
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		//----------------------------------------------------------------------
+		
+		if(contador>0)
+		{
+			
+			respuesta=new String[contador];
+			int j=0;
+			
+			try {
+				
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+				BufferedReader memoria=new BufferedReader(archivoLectura);
+				
+				String linea="";
+				while(linea!=null) {
+					
+					linea=memoria.readLine();
+					if(linea!=null)
+					{
+						
+						String[] auxiliar=linea.split("\\|");
+						if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[1])==(Integer)valor)
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "\n";
+							j++;
+							
+						}
+						
+					}
+					
+				}
+				archivoLectura.close();
+				
+			}catch(IOException ex) {
+				
+				throw new RuntimeException("Error al intentar leer el archivo.");
+				
+			}
+			
+		}
+		
+		return respuesta;
+	}
+	
 }
