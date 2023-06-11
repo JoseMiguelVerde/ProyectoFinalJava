@@ -3,11 +3,13 @@ package Datos;
 import Entidades.Empleado;
 import Entidades.Gerente;
 import Entidades.Percepciones;
+import Utilidades.Constantes.BuscarPor;
 import Utilidades.Constantes.Estatus;
 import Utilidades.Constantes.Generos;
 import Utilidades.Constantes.Puesto;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import Entidades.Deducciones;
 import Entidades.Nomina;
@@ -96,21 +98,7 @@ public class ManipulacionArreglo {
 		boolean respuesta=false;
 		int indice=buscaEspacio();
 		if(indice!=-1)
-		{
-			/*
-			 
-		 	0-Id
-		 	1-Puesto
-		 	2-Nombre
-		 	3-Genero
-		 	4-Curp
-		 	5-Sueldo por dia
-		 	6-Fecha de contratacion
-		 	7-Incentivo
-		 	8-Con vehiculo
-		 	
-			*/
-			
+		{	
 			listaEmpleados[indice]=datos;
 			respuesta=true;
 			
@@ -221,7 +209,7 @@ public class ManipulacionArreglo {
 							break;
 	
 						case 7://fechaNacimiento
-							listaEmpleados[i].setFechaNacimiento(LocalDateTime.parse(empleadoEditado));
+							listaEmpleados[i].setFechaNacimiento(LocalDate.parse(empleadoEditado));
 							respuesta=true;
 							break;
 
@@ -235,5 +223,265 @@ public class ManipulacionArreglo {
 		
 		return respuesta;
 	}
-	
+	private Empleado[] buscarEnListaEmpleados(BuscarPor tipo, Object valor){
+
+		Empleado[] respuesta=null;
+		int contador=0;
+		//contar coincidencias
+		for(int i=0;i<listaEmpleados.length;i++) {
+			if(listaEmpleados[i]!=null)
+			{
+				if(tipo==BuscarPor.ID)
+				{
+					if(listaEmpleados[i].getId()==(Integer)valor)
+					{
+						contador++;
+					}
+				}
+
+				if(tipo==BuscarPor.NOMBRE)
+				{
+					if(listaEmpleados[i].getNombreCompleto().equalsIgnoreCase((String)valor))
+					{
+						contador++;
+					}
+				}
+				if(tipo==BuscarPor.PUESTO)
+				{
+					if(listaEmpleados[i].getPuesto()==(Puesto)valor)
+					{
+						contador++;
+					}
+				}
+				if(tipo==BuscarPor.ESTATUS)
+				{
+					if(listaEmpleados[i].getEstatus()==(Estatus)valor)
+					{
+						contador++;
+					}
+				}
+				
+			}
+		}
+		//-----
+		if(contador>0)
+		{
+			respuesta=new Empleado[contador];
+			int j=0;
+			for(int i=0;i<listaEmpleados.length;i++) {
+				if(listaEmpleados[i]!=null)
+				{
+					if(tipo==BuscarPor.ID)
+					{
+						if(listaEmpleados[i].getId()==(Integer)valor)
+						{
+							respuesta[j]=listaEmpleados[i];
+							j++;
+						}
+					}
+
+					if(tipo==BuscarPor.NOMBRE)
+					{
+						if(listaEmpleados[i].getNombreCompleto().equalsIgnoreCase((String)valor))
+						{
+							respuesta[j]=listaEmpleados[i];
+							j++;
+						}
+					}
+					if(tipo==BuscarPor.PUESTO)
+					{
+						if(listaEmpleados[i].getPuesto()==(Puesto)valor)
+						{
+							respuesta[j]=listaEmpleados[i];
+							j++;
+						}
+					}
+					if(tipo==BuscarPor.ESTATUS)
+					{
+						if(listaEmpleados[i].getEstatus()==(Estatus)valor)
+						{
+							respuesta[j]=listaEmpleados[i];
+							j++;
+						}
+					}
+					
+				}
+			}
+		}
+		
+		
+		return respuesta;
+	}
+	private Percepciones[] buscarEnListaPercepciones(BuscarPor tipo, Object valor){
+
+		Percepciones[] respuesta=null;
+		int contador=0;
+		//contar coincidencias
+		for(int i=0;i<listaPercepciones.length;i++) {
+			if(listaPercepciones[i]!=null)
+			{
+				
+				if(tipo==BuscarPor.ID_PERCEPCION)
+				{
+					if(listaPercepciones[i].getIdPercepcion()==(int)valor)
+					{
+						contador++;
+					}
+				}
+				if(tipo==BuscarPor.PERCEPCION_ID_EMPLEADO)
+				{
+					if(listaPercepciones[i].getIdEmpleado()==(int)valor)
+					{
+						contador++;
+					}
+				}
+				
+			}
+		}
+		//-----
+		if(contador>0)
+		{
+			respuesta=new Percepciones[contador];
+			int j=0;
+			for(int i=0;i<listaPercepciones.length;i++) {
+				if(listaPercepciones[i]!=null)
+				{
+					
+					if(tipo==BuscarPor.ID_PERCEPCION)
+					{
+						if(listaPercepciones[i].getIdPercepcion()==(int)valor)
+						{
+							respuesta[j]=listaPercepciones[i];
+							j++;
+						}
+					}
+					if(tipo==BuscarPor.PERCEPCION_ID_EMPLEADO)
+					{
+						if(listaPercepciones[i].getIdEmpleado()==(int)valor)
+						{
+							respuesta[j]=listaPercepciones[i];
+							j++;
+						}
+					}
+				}
+			}
+		}
+		
+		
+		return respuesta;
+	}
+	private Deducciones[] buscarEnListaDeducciones(BuscarPor tipo, Object valor){
+
+		Deducciones[] respuesta=null;
+		int contador=0;
+		//contar coincidencias
+		for(int i=0;i<listaDeducciones.length;i++) {
+			if(listaDeducciones[i]!=null)
+			{
+				
+				if(tipo==BuscarPor.ID_DEDUCCION)
+				{
+					if(listaDeducciones[i].getIdDeduccion()==(int)valor)
+					{
+						contador++;
+					}
+				}
+				if(tipo==BuscarPor.DEDUCCION_ID_EMPLEADO)
+				{
+					if(listaDeducciones[i].getIdEmpleado()==(int)valor)
+					{
+						contador++;
+					}
+				}
+				
+			}
+		}
+		//-----
+		if(contador>0)
+		{
+			respuesta=new Deducciones[contador];
+			int j=0;
+			for(int i=0;i<listaDeducciones.length;i++) {
+				if(listaDeducciones[i]!=null)
+				{
+					
+					if(tipo==BuscarPor.ID_DEDUCCION)
+					{
+						if(listaDeducciones[i].getIdDeduccion()==(int)valor)
+						{
+							respuesta[j]=listaDeducciones[i];
+							j++;
+						}
+					}
+					if(tipo==BuscarPor.DEDUCCION_ID_EMPLEADO)
+					{
+						if(listaDeducciones[i].getIdEmpleado()==(int)valor)
+						{
+							respuesta[j]=listaDeducciones[i];
+							j++;
+						}
+					}
+				}
+			}
+		}
+		
+		
+		return respuesta;
+	}
+	private Nomina[] buscarEnListaNomina(BuscarPor tipo, Object valor){
+
+		Nomina[] respuesta=null;
+		int contador=0;
+		//contar coincidencias
+		for(int i=0;i<arregloNomina.length;i++) {
+			if(arregloNomina[i]!=null)
+			{
+				
+				if(tipo==BuscarPor.ID_NOMINA)
+				{
+					if(arregloNomina[i].getIdNomina()==(int)valor)
+					{
+						contador++;
+					}
+				}
+				if(tipo==BuscarPor.NOMINA_ID_EMPLEADO)
+				{
+					if(arregloNomina[i].getIdEmpleado()==(int)valor)
+					{
+						contador++;
+					}
+				}
+			}
+		}
+		//-----
+		if(contador>0)
+		{
+			respuesta=new Nomina[contador];
+			int j=0;
+			for(int i=0;i<arregloNomina.length;i++) {
+				if(arregloNomina[i]!=null)
+				{
+					
+					if(tipo==BuscarPor.ID_NOMINA)
+					{
+						if(arregloNomina[i].getIdNomina()==(int)valor)
+						{
+							respuesta[j]=arregloNomina[i];
+							j++;
+						}
+					}
+					if(tipo==BuscarPor.NOMINA_ID_EMPLEADO)
+					{
+						if(arregloNomina[i].getIdEmpleado()==(int)valor)
+						{
+							respuesta[j]=arregloNomina[i];
+							j++;
+						}
+					}
+					
+				}
+			}
+		}	
+		return respuesta;
+	}
 }

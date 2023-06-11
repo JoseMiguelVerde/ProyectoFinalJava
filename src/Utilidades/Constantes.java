@@ -14,7 +14,7 @@ public class Constantes {
 	
 	public static final String CABECERA_NOMINA="Id Empleado\t\tId de nomina\t\tFecha de nomina\t\tFaltas\t\tTotal\t\tTotal percepción\t\tTotal deducción\n";
 	
-	public enum BuscarPor{ID,NOMBRE,PUESTO,ESTATUS,ID_DEDUCCION,ID_PERCEPCION,ID_NOMINA};
+	public enum BuscarPor{ID,NOMBRE,PUESTO,ESTATUS,ID_DEDUCCION,DEDUCCION_ID_EMPLEADO,ID_PERCEPCION,PERCEPCION_ID_EMPLEADO,ID_NOMINA,NOMINA_ID_EMPLEADO};
 	
 	public enum Movimientos{EDICION, INSERCION};
 	
@@ -171,3 +171,4 @@ public class Constantes {
 		
 	}
 }
+

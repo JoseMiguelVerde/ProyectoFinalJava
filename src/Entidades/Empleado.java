@@ -1,5 +1,5 @@
 package Entidades;
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import Utilidades.Constantes.*;
@@ -12,11 +12,12 @@ public class Empleado {
 	private Puesto puesto;
 	private Generos genero;
 	private Estatus estatus;
-	private LocalDateTime fechaContratacion, fechaNacimiento;
+	private LocalDateTime fechaContratacion;
+	private LocalDate fechaNacimiento;
 	private static int siguienteId=1;
 	
 
-	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDateTime fechaNacimiento, Movimientos movimiento) {
+	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDate fechaNacimiento) {
 
 		this.id=manipulacion.dameIdEmpleados();
 		this.nombreCompleto=nombreCompleto;
@@ -109,12 +110,12 @@ public class Empleado {
 	}
 
 
-	public LocalDateTime getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
 
-	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

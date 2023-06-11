@@ -8,14 +8,23 @@ public class Nomina {
 	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
 	private int idEmpleado;
 	private int idNomina;
+	private int faltas;
 	private LocalDateTime fecha;
-	public Nomina(int idEmpleado)
+	public Nomina(int idEmpleado, int faltas)
 	{
 		this.idNomina=manipulacion.dameIdNomina();
 		this.idEmpleado=idEmpleado;
 		this.fecha=LocalDateTime.now();
+		this.faltas=faltas;
 	}
 	
+	public int getFaltas() {
+		return faltas;
+	}
+	public void setFaltas(int faltas) {
+		this.faltas = faltas;
+	}
+
 	public int getIdEmpleado() {
 		return idEmpleado;
 	}
