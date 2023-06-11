@@ -145,7 +145,7 @@ public class Archivos {
 			
 			FileWriter archivo=new FileWriter("lista_empleados.txt",true);
 			
-			archivo.write(String.valueOf(datos.getId()) + "|" + datos.getNombreCompleto() + "|" + datos.getPuesto().getIdPuesto() + "|" + datos.getRfc() + "|" + datos.getCurp() + "|" + datos.getDireccion() + "|" + datos.getGenero().getIdGenero() + "|" + datos.getEstatus() + "|" + datos.getFechaNacimiento().toString() + "|" + datos.getFechaContratacion().toString() + "\n");
+			archivo.write(String.valueOf(datos.getId()) + "|" + datos.getNombreCompleto() + "|" + datos.getPuesto().getPuesto() + "|" + datos.getRfc() + "|" + datos.getCurp() + "|" + datos.getDireccion() + "|" + datos.getGenero().getNombreGenero() + "|" + datos.getEstatus() + "|" + datos.getFechaNacimiento().toString() + "|" + datos.getFechaContratacion().toString() + "\n");
 			
 			archivo.close();
 			respuesta=true;
@@ -184,7 +184,6 @@ public class Archivos {
 		}catch(IOException ex) {
 			
 			System.out.println("Error al intentar leer el archivo.");
-			
 		}
 		
 		return respuesta;
@@ -291,7 +290,7 @@ public class Archivos {
 			
 			FileWriter archivo=new FileWriter("lista_deducciones.txt",true);
 			
-			archivo.write(String.valueOf(datos.getIdDeduccion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoDeduccion().getIdDeduccion() + "\n");
+			archivo.write(String.valueOf(datos.getIdDeduccion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoDeduccion().getNombreDeduccion()+ "|"  + datos.getTipoDeduccion().getPorcentajeDeLaDeduccion() + "%"  + "\n");
 			
 			archivo.close();
 			respuesta=true;
@@ -393,7 +392,7 @@ public class Archivos {
 			
 			FileWriter archivo=new FileWriter("lista_percepciones.txt",true);
 			
-			archivo.write(String.valueOf(datos.getIdPercepcion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoPercepcion().getIdPercepcion() + "\n");
+			archivo.write(String.valueOf(datos.getIdPercepcion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoPercepcion().getNombrePercepcion()+ "|"  + datos.getTipoPercepcion().getPorcentajeDeLaPercepcion() + "%" + "\n");
 			
 			archivo.close();
 			respuesta=true;
