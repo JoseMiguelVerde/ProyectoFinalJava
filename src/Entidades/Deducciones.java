@@ -1,10 +1,11 @@
 package Entidades;
 import java.time.LocalDateTime;
 
+import Datos.Archivos;
 import Datos.ManipulacionArreglo;
 import Utilidades.Constantes.Deduccion;
 public class Deducciones {
-	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
+	Archivos manipulacionArchivo= new Archivos();
 	private int idEmpleado;
 	private int idDeduccion;
 	private LocalDateTime fecha;
@@ -14,7 +15,7 @@ public class Deducciones {
 	
 	public Deducciones(int idEmpleado,Deduccion tipoDeduccion)
 	{
-		this.idDeduccion=manipulacion.dameIdDeducciones();
+		this.idDeduccion=manipulacionArchivo.dameIdDeducciones();
 		this.idEmpleado=idEmpleado;
 		this.fecha=LocalDateTime.now();
 		this.tipoDeduccion=tipoDeduccion;

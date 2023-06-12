@@ -1,9 +1,10 @@
 package Entidades;
 import java.time.LocalDateTime;
 import Utilidades.Constantes.Percepcion;
+import Datos.Archivos;
 import Datos.ManipulacionArreglo;
 public class Percepciones {
-	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
+	Archivos manipulacionArchivo= new Archivos();
 	private int idEmpleado;
 	private int idPercepcion;
 	private LocalDateTime fecha;
@@ -13,7 +14,7 @@ public class Percepciones {
 	
 	public Percepciones(int idEmpleado,Percepcion tipoPercepcion)
 	{
-		this.idPercepcion=manipulacion.dameIdPercepcion();
+		this.idPercepcion=manipulacionArchivo.dameIdPercepciones();
 		this.idEmpleado=idEmpleado;
 		this.fecha=LocalDateTime.now();
 		this.tipoPercepcion=tipoPercepcion;

@@ -3,10 +3,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import Utilidades.Constantes.*;
+import Datos.Archivos;
 import Datos.ManipulacionArreglo;
 public class Empleado {
 	
-	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
+	Archivos manipulacionArchivo= new Archivos();
 	private int id, codigoPostal;
 	private String nombreCompleto, rfc, curp, direccion;
 	private Puesto puesto;
@@ -19,7 +20,7 @@ public class Empleado {
 
 	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDate fechaNacimiento, int codigoPostal) {
 
-		this.id=manipulacion.dameIdEmpleados();
+		this.id=manipulacionArchivo.dameIdEmpleados();
 		this.nombreCompleto=nombreCompleto;
 		this.puesto=puesto;
 		this.rfc=rfc;

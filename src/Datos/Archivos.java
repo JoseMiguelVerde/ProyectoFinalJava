@@ -160,6 +160,138 @@ public class Archivos {
 		
 		return respuesta;
 	}
+	public int dameIdEmpleados() {
+		int respuesta=0, id=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[0])>id) {
+						id=Integer.parseInt(auxiliar[0]);
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		respuesta=id+1;
+		return respuesta;
+	}
+	public int dameIdPercepciones() {
+		int respuesta=0, id=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[0])>id) {
+						id=Integer.parseInt(auxiliar[0]);
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		respuesta=id+1;
+		return respuesta;
+	}
+	public int dameIdDeducciones() {
+		int respuesta=0, id=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[0])>id) {
+						id=Integer.parseInt(auxiliar[0]);
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		respuesta=id+1;
+		return respuesta;
+	}
+	public int dameIdNomina() {
+		int respuesta=0, id=0;
+		
+		try {
+			
+			FileReader archivoLectura=new FileReader("lista_nomina.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[0])>id) {
+						id=Integer.parseInt(auxiliar[0]);
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		respuesta=id+1;
+		return respuesta;
+	}
 	
 	
 	

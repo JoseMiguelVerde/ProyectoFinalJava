@@ -1,18 +1,20 @@
 package Entidades;
 
 import java.time.LocalDateTime;
+
+import Datos.Archivos;
 import Datos.ManipulacionArreglo;
 import Utilidades.Constantes.Deduccion;
 
 public class Nomina {
-	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
+	Archivos manipulacionArchivo= new Archivos();
 	private int idEmpleado;
 	private int idNomina;
 	private int faltas;
 	private LocalDateTime fecha;
 	public Nomina(int idEmpleado, int faltas)
 	{
-		this.idNomina=manipulacion.dameIdNomina();
+		this.idNomina=manipulacionArchivo.dameIdNomina();
 		this.idEmpleado=idEmpleado;
 		this.fecha=LocalDateTime.now();
 		this.faltas=faltas;
