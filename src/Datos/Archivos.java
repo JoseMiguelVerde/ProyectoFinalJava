@@ -1175,7 +1175,7 @@ public class Archivos {
 
 		try {
 
-			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
+			FileReader archivoLectura=new FileReader("lista_de_asistencias.txt", Charset.forName("UTF8"));
 			BufferedReader memoria=new BufferedReader(archivoLectura);
 
 			String linea="";
@@ -1206,22 +1206,48 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public float operacionesDeduccionesYPercepciones(int idEmpleado) {
+	public float operacionesPercepciones(int idEmpleado) {
 		float respuesta=0;
 		String[] percepcionesPorEmpleado=buscarPercepcion(BuscarPor.ID, idEmpleado);
-		String[] deduccionesPorEmpleado=buscarDeduccion(BuscarPor.ID, idEmpleado);
+		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
 		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
 		float total=0;
 		float auxiliar;
 		
-		for(int i=0;i<percepcionesPorEmpleado.length;i++) {
-			String[] percepcion=percepcionesPorEmpleado[i].split("|");
-			auxiliar=(Float.parseFloat(percepcion[3])*contadorAsistencias)/100;
+		if(percepcionesPorEmpleado!=null)
+		{
+			for(int i=0;i<percepcionesPorEmpleado.length;i++) {
+
+				String[] percepcion=percepcionesPorEmpleado[i].split("|");
+				String[] empleado=empleadoCompleto[0].split("|");
+				auxiliar=(Float.parseFloat(percepcion[4])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
+				total+=auxiliar;
+
+			}
+
+		}
+		
+		
+		return respuesta=total;
+	}
+	
+	public float operacionesDeducciones(int idEmpleado) {
+		float respuesta=0;
+		String[] deduccionesPorEmpleado=buscarDeduccion(BuscarPor.ID, idEmpleado);
+		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
+		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
+		float total=0;
+		float auxiliar;
+		
+		for(int i=0;i<deduccionesPorEmpleado.length;i++) {
+			String[] deduccion=deduccionesPorEmpleado[i].split("|");
+			String[] empleado=empleadoCompleto[0].split("|");
+			auxiliar=(Float.parseFloat(deduccion[3])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
 			total+=auxiliar;
 		}
 		
 		
-		return respuesta;
+		return respuesta=total;
 	}
 	
 }
