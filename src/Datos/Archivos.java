@@ -506,6 +506,102 @@ public class Archivos {
 		return respuesta;
 	}
 	
+	public boolean eliminarDeduccion(int idEmpleado, int idDeduccion) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)) && !(auxiliar[0]==String.valueOf(idDeduccion)))
+					{
+
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+
+					}
+					
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_deducciones.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean editarDeduccion(int idEmpleado,int idDeduccion, Object dato) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && auxiliar[1]==String.valueOf(idEmpleado) && auxiliar[0]==String.valueOf(idDeduccion))
+					{
+
+						auxiliar[4]=String.valueOf(dato);
+
+					}
+
+					String LineaModificada = String.join("|", auxiliar);
+					memoriaEscritura.write(LineaModificada);
+					memoriaEscritura.newLine();
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_deducciones.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
 	public boolean agregarPercepcion(Percepciones datos) {
 		boolean respuesta=false;
 		
@@ -607,6 +703,100 @@ public class Archivos {
 		return respuesta;
 	}
 	
+	public boolean eliminarPercepcion(int idEmpleado, int idPercepcion) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)) && !(auxiliar[0]==String.valueOf(idPercepcion)))
+					{
+
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+
+					}
+					
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_percepciones.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
 	
+	public boolean editarPercepcion(int idEmpleado,int idPercepcion, Object dato) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && auxiliar[1]==String.valueOf(idEmpleado) && auxiliar[0]==String.valueOf(idPercepcion))
+					{
+
+						auxiliar[4]=String.valueOf(dato);
+
+					}
+
+					String LineaModificada = String.join("|", auxiliar);
+					memoriaEscritura.write(LineaModificada);
+					memoriaEscritura.newLine();
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_percepciones.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
 	
 }
