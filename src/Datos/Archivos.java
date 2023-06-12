@@ -472,6 +472,34 @@ public class Archivos {
 						contador++;
 
 					}
+					
+					if(tipo==BuscarPor.PUESTO && valor==Puesto.EMPLEADO)
+					{
+						
+						contador++;
+						
+					}
+					
+					if(tipo==BuscarPor.PUESTO && valor==Puesto.GERENTE)
+					{
+						
+						contador++;
+						
+					}
+					
+					if(tipo==BuscarPor.GENERO && valor==Generos.FEMENINO)
+					{
+						
+						contador++;
+						
+					}
+					
+					if(tipo==BuscarPor.GENERO && valor==Generos.MASCULINO)
+					{
+						
+						contador++;
+						
+					}
 				}
 				
 			}
@@ -513,6 +541,38 @@ public class Archivos {
 						}
 						
 						if (tipo==BuscarPor. NOMBRE && auxiliar [1].equalsIgnoreCase((String)valor))
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
+							j++;
+							
+						}
+						
+						if(tipo==BuscarPor.PUESTO && valor==Puesto.EMPLEADO)
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
+							j++;
+							
+						}
+						
+						if(tipo==BuscarPor.PUESTO && valor==Puesto.GERENTE)
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
+							j++;
+							
+						}
+						
+						if(tipo==BuscarPor.GENERO && valor==Generos.FEMENINO)
+						{
+							
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
+							j++;
+							
+						}
+						
+						if(tipo==BuscarPor.GENERO && valor==Generos.MASCULINO)
 						{
 							
 							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
@@ -638,7 +698,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean eliminarDeduccion(int idEmpleado, int idDeduccion) {
+	public boolean eliminarUnaDeduccion(int idDeduccion) {
 		boolean respuesta=false;
 		
 		try {
@@ -656,7 +716,54 @@ public class Archivos {
 
 
 					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)) && !(auxiliar[0]==String.valueOf(idDeduccion)))
+					if(auxiliar.length>0 && !(auxiliar[0]==String.valueOf(idDeduccion)))
+					{
+
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+
+					}
+					
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_deducciones.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean eliminarDeduccionesDeEmpleado(int idEmpleado) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UTF8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)))
 					{
 
 						memoriaEscritura.write(linea);
@@ -835,7 +942,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean eliminarPercepcion(int idEmpleado, int idPercepcion) {
+	public boolean eliminarUnaPercepcion(int idPercepcion) {
 		boolean respuesta=false;
 		
 		try {
@@ -853,7 +960,54 @@ public class Archivos {
 
 
 					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)) && !(auxiliar[0]==String.valueOf(idPercepcion)))
+					if(auxiliar.length>0 && !(auxiliar[0]==String.valueOf(idPercepcion)))
+					{
+
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+
+					}
+					
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_percepciones.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean eliminarPercepciones(int idEmpleado) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UTF8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)))
 					{
 
 						memoriaEscritura.write(linea);
@@ -1003,7 +1157,8 @@ public class Archivos {
 		float respuesta=0;
 		String[] percepcionesPorEmpleado=buscarPercepcion(BuscarPor.ID, idEmpleado);
 		String[] deduccionesPorEmpleado=buscarDeduccion(BuscarPor.ID, idEmpleado);
-		float contador=0;
+		int contadorAsistencias=0;
+		float total=0;
 		float auxiliar=0;
 		
 		for(int i=0;i<percepcionesPorEmpleado.length;i++) {
@@ -1014,5 +1169,5 @@ public class Archivos {
 		
 		return respuesta;
 	}
-	//anadir el buscar por genero
+	
 }
