@@ -39,7 +39,7 @@ public class Constantes {
 
 	
 	//cabeceras
-	public static final String CABECERA_EMPLEADO="Id empleado\t|\tNombre Completo\t|\tPuesto\t|\tSueldo Por dia\t|\tRFC\t|\tCURP\t|\tDirección\t|\tGénero\t|\tEstatus\t|\tFecha de nacimiento\t\n";
+	public static final String CABECERA_EMPLEADO="Id empleado\t|\tNombre Completo\t|\tPuesto\t|\tSueldo Por dia\t|\tRFC\t|\tCURP\t|\tDirección\t|\tGénero\t|\tEstatus\t|\tFecha de nacimiento\t|\tFecha de contratación\n";
 	public static final String CABECERA_DEDUCCIONES="Id deducción\t|\tId empleado\t|\tPeriodo\t|\tTipo de deducción\t|\tPorcentaje\n";
 	public static final String CABECERA_PERCEPCIONES="Id percepcion\t|\tId empleado\t|\tPeriodo\t|\tTipo de percepcion\t|\tPorcentaje\n";
 	public static final String CABECERA_NOMINA="Id Empleado\t|\tId de nomina\t|\tFecha de nomina\t|\tFaltas\t|\tTotal percepción\t|\tTotal deduccion\t|\tTotal\n";
@@ -149,7 +149,7 @@ public class Constantes {
 	}
 	
 	public enum Percepcion{
-		COMISION(0,"Comision",6),BONO(1,"Bono",10),PRIMA_VACACIONAL(2,"Prima Vacasional",50); // el 3, 5 y 25 son los porcentajes de cada percepcion(mensuales)
+		COMISION(0,"Comision",6),BONO(1,"Bono",10),PRIMA_VACACIONAL(2,"Prima Vacasional",25); // el 6, 10 y 25 son los porcentajes de cada percepcion(mensuales)
 		private int idPercepcion;
 		private String nombrePercepcion;
 		private int porcentajeDeLaPercepcion;

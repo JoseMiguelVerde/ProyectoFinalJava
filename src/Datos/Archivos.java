@@ -302,7 +302,7 @@ public class Archivos {
 			
 			FileWriter archivo=new FileWriter("lista_empleados.txt",true);
 			
-			archivo.write(String.valueOf(datos.getId()) + "|" + datos.getNombreCompleto() + "|" + datos.getPuesto().getPuesto() + "|" + datos.getRfc() + "|" + datos.getCurp() + "|" + datos.getDireccion() + "|" + datos.getGenero().getNombreGenero() + "|" + datos.getEstatus() + "|" + datos.getFechaNacimiento().toString() + "|" + datos.getFechaContratacion().toString() + "\n");
+			archivo.write(String.valueOf(datos.getId()) + "|" + datos.getNombreCompleto() + "|" + datos.getPuesto().getPuesto() + "|" + String.valueOf(datos.getPuesto().getSueldo()) + "|" + datos.getRfc() + "|" + datos.getCurp() + "|" + datos.getDireccion() + "|" + datos.getGenero().getNombreGenero() + "|" + datos.getEstatus() + "|" + datos.getFechaNacimiento().toString() + "|" + datos.getFechaContratacion().toString() + "\n");
 			
 			archivo.close();
 			respuesta=true;
@@ -321,7 +321,7 @@ public class Archivos {
 
 		try {
 
-			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
 			BufferedReader memoria=new BufferedReader(archivoLectura);
 			
 			String linea="";
@@ -353,7 +353,7 @@ public class Archivos {
 			
 			if(creaArchivoAuxiliar()==true)
 			{
-				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
 				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
 				
 				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
@@ -402,7 +402,7 @@ public class Archivos {
 			
 			if(creaArchivoAuxiliar()==true)
 			{
-				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
 				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
 				
 				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
@@ -448,7 +448,7 @@ public class Archivos {
 		
 		try {
 			
-			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
 			BufferedReader memoria=new BufferedReader(archivoLectura);
 			
 			String linea="";
@@ -493,7 +493,7 @@ public class Archivos {
 			
 			try {
 				
-				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
 				BufferedReader memoria=new BufferedReader(archivoLectura);
 				
 				String linea="";
@@ -507,7 +507,7 @@ public class Archivos {
 						if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[0])==(Integer)valor)
 						{
 							
-							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9];
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
 							j++;
 							
 						}
@@ -515,7 +515,7 @@ public class Archivos {
 						if (tipo==BuscarPor. NOMBRE && auxiliar [1].equalsIgnoreCase((String)valor))
 						{
 							
-							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9];
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
 							j++;
 							
 						}
@@ -564,7 +564,7 @@ public class Archivos {
 		
 		try {
 			
-			FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+			FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UTF8"));
 			BufferedReader memoria=new BufferedReader(archivoLectura);
 			
 			String linea="";
@@ -603,7 +603,7 @@ public class Archivos {
 			
 			try {
 				
-				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UTF8"));
 				BufferedReader memoria=new BufferedReader(archivoLectura);
 				
 				String linea="";
@@ -617,7 +617,7 @@ public class Archivos {
 						if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[1])==(Integer)valor)
 						{
 							
-							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "\n";
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "\n";
 							j++;
 							
 						}
@@ -645,7 +645,7 @@ public class Archivos {
 			
 			if(creaArchivoAuxiliar()==true)
 			{
-				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UTF8"));
 				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
 				
 				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
@@ -692,7 +692,7 @@ public class Archivos {
 			
 			if(creaArchivoAuxiliar()==true)
 			{
-				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_deducciones.txt", Charset.forName("UTF8"));
 				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
 				
 				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
@@ -814,7 +814,7 @@ public class Archivos {
 						if(tipo==BuscarPor.ID && Integer.parseInt(auxiliar[1])==(Integer)valor)
 						{
 							
-							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "\n";
+							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "\n";
 							j++;
 							
 						}
@@ -1014,4 +1014,5 @@ public class Archivos {
 		
 		return respuesta;
 	}
+	//anadir el buscar por genero
 }
