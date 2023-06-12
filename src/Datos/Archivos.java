@@ -363,17 +363,23 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && auxiliar[0]==String.valueOf(idEmpleado))
+					String[] auxiliar = linea.split("\\|");
+					if(auxiliar.length>0 && auxiliar[0].equalsIgnoreCase(String.valueOf(idEmpleado)))
 					{
 
 						auxiliar[datoAEditar]=String.valueOf(dato);
+						String LineaModificada = String.join("|", auxiliar);
+						memoriaEscritura.write(LineaModificada);
+						memoriaEscritura.newLine();
 
+					}else {
+						
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+						
 					}
 
-					String LineaModificada = String.join("|", auxiliar);
-					memoriaEscritura.write(LineaModificada);
-					memoriaEscritura.newLine();
+					
 				}
 				memoriaLectura.close();
 				memoriaEscritura.close();
@@ -792,7 +798,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean editarDeduccion(int idEmpleado,int idDeduccion, Object dato) {
+	public boolean editarDeduccion(int idDeduccion, Object dato) {
 		boolean respuesta=false;
 		
 		try {
@@ -810,16 +816,21 @@ public class Archivos {
 
 
 					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && auxiliar[1]==String.valueOf(idEmpleado) && auxiliar[0]==String.valueOf(idDeduccion))
+					if(auxiliar.length>0 && auxiliar[0].equalsIgnoreCase(String.valueOf(idDeduccion)))
 					{
 
 						auxiliar[4]=String.valueOf(dato);
+						String LineaModificada = String.join("|", auxiliar);
+						memoriaEscritura.write(LineaModificada);
+						memoriaEscritura.newLine();
 
+					}else {
+						
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+						
 					}
 
-					String LineaModificada = String.join("|", auxiliar);
-					memoriaEscritura.write(LineaModificada);
-					memoriaEscritura.newLine();
 				}
 				memoriaLectura.close();
 				memoriaEscritura.close();
@@ -1036,7 +1047,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean editarPercepcion(int idEmpleado,int idPercepcion, Object dato) {
+	public boolean editarPercepcion(int idPercepcion, Object dato) {
 		boolean respuesta=false;
 		
 		try {
@@ -1053,17 +1064,22 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && auxiliar[1]==String.valueOf(idEmpleado) && auxiliar[0]==String.valueOf(idPercepcion))
+					String[] auxiliar = linea.split("\\|");
+					if(auxiliar.length>0 && auxiliar[0].equalsIgnoreCase(String.valueOf(idPercepcion)))
 					{
 
 						auxiliar[4]=String.valueOf(dato);
+						String LineaModificada = String.join("|", auxiliar);
+						memoriaEscritura.write(LineaModificada);
+						memoriaEscritura.newLine();
 
+					}else {
+						
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+						
 					}
 
-					String LineaModificada = String.join("|", auxiliar);
-					memoriaEscritura.write(LineaModificada);
-					memoriaEscritura.newLine();
 				}
 				memoriaLectura.close();
 				memoriaEscritura.close();
@@ -1153,17 +1169,55 @@ public class Archivos {
 		
 		return respuesta;
 	}
+	
+	public int numeroDeAsistencias(int idEmpleado) {
+		int respuesta=0;
+
+		try {
+
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+
+			String linea="";
+			while(linea!=null) {
+
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[1])==idEmpleado)
+					{
+
+						respuesta++;
+
+					}
+				}
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+
+
+		return respuesta;
+	}
+	
 	public float operacionesDeduccionesYPercepciones(int idEmpleado) {
 		float respuesta=0;
 		String[] percepcionesPorEmpleado=buscarPercepcion(BuscarPor.ID, idEmpleado);
 		String[] deduccionesPorEmpleado=buscarDeduccion(BuscarPor.ID, idEmpleado);
-		int contadorAsistencias=0;
+		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
 		float total=0;
-		float auxiliar=0;
+		float auxiliar;
 		
 		for(int i=0;i<percepcionesPorEmpleado.length;i++) {
 			String[] percepcion=percepcionesPorEmpleado[i].split("|");
-			auxiliar=(Float.parseFloat(percepcion[3]));
+			auxiliar=(Float.parseFloat(percepcion[3])*contadorAsistencias)/100;
+			total+=auxiliar;
 		}
 		
 		
