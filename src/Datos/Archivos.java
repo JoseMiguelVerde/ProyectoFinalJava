@@ -256,6 +256,55 @@ public class Archivos {
 			
 		}catch(IOException ex) {
 			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean bajaEmpleadoPorIdFisica(int idEmpleado) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && !auxiliar[0].equalsIgnoreCase(String.valueOf(idEmpleado)))
+					{
+
+						memoriaEscritura.write(linea);
+						memoriaEscritura.newLine();
+
+					}
+					
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_empleados.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
 		}
 		
 		return respuesta;
