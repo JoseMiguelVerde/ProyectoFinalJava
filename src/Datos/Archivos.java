@@ -629,7 +629,7 @@ public class Archivos {
 		
 		try {
 			
-			FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+			FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UTF8"));
 			BufferedReader memoria=new BufferedReader(archivoLectura);
 			
 			String linea="";
@@ -668,7 +668,7 @@ public class Archivos {
 			
 			try {
 				
-				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UTF8"));
 				BufferedReader memoria=new BufferedReader(archivoLectura);
 				
 				String linea="";
@@ -710,7 +710,7 @@ public class Archivos {
 			
 			if(creaArchivoAuxiliar()==true)
 			{
-				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UTF8"));
 				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
 				
 				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
@@ -757,7 +757,7 @@ public class Archivos {
 			
 			if(creaArchivoAuxiliar()==true)
 			{
-				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UFT8"));
+				FileReader archivoLectura=new FileReader("lista_percepciones.txt", Charset.forName("UTF8"));
 				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
 				
 				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
@@ -794,6 +794,75 @@ public class Archivos {
 			
 			throw new RuntimeException("Error al intentar leer el archivo.");
 			
+		}
+		
+		return respuesta;
+	}
+	
+	public String mostrar(String[] arreglo, int opcion) {
+		String respuesta="";
+		
+		switch(opcion) {
+		
+			case 1:
+				respuesta=Constantes.CABECERA_EMPLEADO;
+		
+				if (arreglo!=null)
+				{
+					
+					for(int i=0; i<arreglo.length;i++) {
+						
+						respuesta+=arreglo[i]+"\n";
+						
+					}
+					
+				}
+				break;
+				
+			case 2:
+				respuesta=Constantes.CABECERA_DEDUCCIONES;
+				
+				if (arreglo!=null)
+				{
+					
+					for(int i=0; i<arreglo.length;i++) {
+						
+						respuesta+=arreglo[i]+"\n";
+						
+					}
+					
+				}
+				break;
+				
+			case 3:
+				respuesta=Constantes.CABECERA_PERCEPCIONES;
+
+				if (arreglo!=null)
+				{
+
+					for(int i=0; i<arreglo.length;i++) {
+
+						respuesta+=arreglo[i]+"\n";
+
+					}
+
+				}
+				break;
+				
+			case 4:
+				respuesta=Constantes.CABECERA_NOMINA;
+
+				if (arreglo!=null)
+				{
+
+					for(int i=0; i<arreglo.length;i++) {
+
+						respuesta+=arreglo[i]+"\n";
+
+					}
+
+				}
+				break;
 		}
 		
 		return respuesta;
