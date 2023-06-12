@@ -1193,7 +1193,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public float operacionesPercepciones(int idEmpleado) {
+public float operacionesPercepciones(int idEmpleado) {
 		
 		String[] percepcionesPorEmpleado=buscarPercepcion(BuscarPor.ID, idEmpleado);
 		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
@@ -1205,8 +1205,8 @@ public class Archivos {
 		{
 			for(int i=0;i<percepcionesPorEmpleado.length;i++) {
 
-				String[] percepcion=percepcionesPorEmpleado[i].split("|");
-				String[] empleado=empleadoCompleto[0].split("|");
+				String[] percepcion=percepcionesPorEmpleado[i].split("\\|");
+				String[] empleado=empleadoCompleto[0].split("\\|");
 				auxiliar=(Float.parseFloat(percepcion[4])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
 				total+=auxiliar;
 
@@ -1227,9 +1227,9 @@ public class Archivos {
 		float auxiliar;
 		
 		for(int i=0;i<deduccionesPorEmpleado.length;i++) {
-			String[] deduccion=deduccionesPorEmpleado[i].split("|");
-			String[] empleado=empleadoCompleto[0].split("|");
-			auxiliar=(Float.parseFloat(deduccion[3])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
+			String[] deduccion=deduccionesPorEmpleado[i].split("\\|");
+			String[] empleado=empleadoCompleto[0].split("\\|");
+			auxiliar=(Float.parseFloat(deduccion[4])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
 			total+=auxiliar;
 		}
 		

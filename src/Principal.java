@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import Datos.Archivos;
-import Datos.ManipulacionArreglo;
 public class Principal {
 
 	public static void main(String[] args) {
@@ -22,7 +21,6 @@ public class Principal {
 		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero;
 		boolean ciclo=false;
 		Validaciones validar=new Validaciones();
-		ManipulacionArreglo manipulacion=new ManipulacionArreglo();
 		Archivos manipulacionArchivos= new Archivos();
 		System.out.println(Constantes.BIENVENIDO);
 		do {
