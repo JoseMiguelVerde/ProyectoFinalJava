@@ -8,8 +8,8 @@ import Utilidades.Constantes.Puesto;
 
 public class Gerente extends Empleado {
 	
-	public Gerente(String nombre,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDate fechaNacimiento) {
-		super(nombre,puesto,rfc,curp,direccion,genero,fechaNacimiento);
+	public Gerente(String nombre,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDate fechaNacimiento,int codigoPostal) {
+		super(nombre,puesto,rfc,curp,direccion,genero,fechaNacimiento,codigoPostal);
 		
 	}	
 }

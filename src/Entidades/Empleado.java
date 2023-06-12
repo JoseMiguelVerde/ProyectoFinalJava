@@ -7,7 +7,7 @@ import Datos.ManipulacionArreglo;
 public class Empleado {
 	
 	ManipulacionArreglo manipulacion= new ManipulacionArreglo();
-	private int id;
+	private int id, codigoPostal;
 	private String nombreCompleto, rfc, curp, direccion;
 	private Puesto puesto;
 	private Generos genero;
@@ -17,7 +17,7 @@ public class Empleado {
 	private static int siguienteId=1;
 	
 
-	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDate fechaNacimiento) {
+	public Empleado(String nombreCompleto,Puesto puesto, String rfc, String curp, String direccion, Generos genero, LocalDate fechaNacimiento, int codigoPostal) {
 
 		this.id=manipulacion.dameIdEmpleados();
 		this.nombreCompleto=nombreCompleto;
@@ -25,6 +25,7 @@ public class Empleado {
 		this.rfc=rfc;
 		this.curp=curp;
 		this.direccion=direccion;
+		this.codigoPostal=codigoPostal;
 		this.genero=genero;
 		estatus=estatus.ACTIVO;
 		this.fechaNacimiento=fechaNacimiento;
@@ -32,6 +33,16 @@ public class Empleado {
 		
 	}
 	
+
+	public int getCodigoPostal() {
+		return codigoPostal;
+	}
+
+
+	public void setCodigoPostal(int codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
 
 	public int getId() {
 		return id;

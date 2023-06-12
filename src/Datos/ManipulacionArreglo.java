@@ -65,6 +65,51 @@ public class ManipulacionArreglo {
 		
 		return indice;
 	}
+	private boolean estaVacio(int arreglo) {
+		boolean respuesta=true;
+		//1 es lista empleados
+		if(arreglo==1) {
+			for(int i=0;i<listaEmpleados.length;i++) {
+				if(listaEmpleados[i]!=null)
+				{
+					respuesta=false;
+					break;
+				}
+			}
+		}
+		//2 es lista Percepciones
+		if(arreglo==2) {
+			for(int i=0;i<listaPercepciones.length;i++) {
+				if(listaPercepciones[i]!=null)
+				{
+					respuesta=false;
+					break;
+				}
+			}
+		}
+		//3 es lista deducciones
+		if(arreglo==3) {
+			for(int i=0;i<listaDeducciones.length;i++) {
+				if(listaDeducciones[i]!=null)
+				{
+					respuesta=false;
+					break;
+				}
+			}
+		}
+		//4 es nomina
+		if(arreglo==4) {
+			for(int i=0;i<arregloNomina.length;i++) {
+				if(arregloNomina[i]!=null)
+				{
+					respuesta=false;
+					break;
+				}
+			}
+		}
+		
+		return respuesta;
+	}
 	
 	public int dameIdEmpleados() {
 		int indice=0, id=0;

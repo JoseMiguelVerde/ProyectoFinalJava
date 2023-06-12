@@ -1,5 +1,8 @@
 package Utilidades;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import Entidades.Empleado;
 
 public class Validaciones {
@@ -11,6 +14,42 @@ public class Validaciones {
 			respuesta = true;
 		} catch (Exception ex) {
 			respuesta = false;
+		}
+		return respuesta;
+	}
+	public boolean nombreYDireccion(String valor) {
+		boolean respuesta=false;
+		if(valor.length()>0) {
+			respuesta=true;
+		}
+		return respuesta;
+	}
+	public boolean fechaDeNacimiento(String valor) {
+		boolean respuesta=false;
+		if(valor.length()>0) {
+			respuesta=true;
+		}
+		return respuesta;
+	}
+//	public static LocalDate transformarFecha(String fecha) {
+//     
+//        LocalDate localDate = LocalDate.parse(fecha, Constantes.FORMATO_FECHA_NACIMIENTO);
+//        return fechaTransformada
+//	}
+	public boolean puestoYGenero(String valor) {
+		boolean respuesta=false;
+		try {
+			if(Integer.parseInt(valor)>=1 && Integer.parseInt(valor)<=2);
+			respuesta = true;
+		} catch (Exception ex) {
+			respuesta = false;
+		}
+		return respuesta;
+	}
+	public boolean codigoPostal(String valor) {
+		boolean respuesta=false;
+		if(valor.length()>0) {
+			respuesta=true;
 		}
 		return respuesta;
 	}

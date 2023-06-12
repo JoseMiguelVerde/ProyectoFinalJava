@@ -3,17 +3,47 @@ package Utilidades;
 import java.time.format.DateTimeFormatter;
 
 public class Constantes {
-	
+	//menu
+	public static final String BIENVENIDO= "Consulta de Empleados\n";
+	public static final String MENU_INICIAL="Selecciona una opcion:\n1)Empleados\n2)Deducciones \n3)Percepciones\n4)Generacion de recibos de nomina \n5)Salir\n";
+	public static final String MENU_EMPLEADOS="Selecciona una opcion:\n1)Dar de alta\n2)Dar de Baja \n3)Modificar\n4)Consultar\n";
+	public static final String MENU_DEDUCCIONES="Selecciona una opcion:\n1)Agregar\n2)Eliminar \n3)Modificar\n4)Consultar\n";
+	public static final String MENU_PERCEPCIONES="Selecciona una opcion:\n1)Agregar\n2)Eliminar \n3)Modificar\n4)Consultar\n";
+	public final static String ALTA_EMPLEADO="\tAlta Empleado\nFavor de ingresar los siguientes datos:\n";
+	public static final String VOLVER_AL_MENU="\n¿Quiere volver al menu? \n1) Si \nsi quiere salir del programa presione cualquier tecla";
+	public final static String INGRESAR_VALOR_NUMERICO="Debe ingresar un valor numerico.";
+	public final static String OPCION_INVALIDA="Opcion invalida, escoga un numero de la opcion del menu";
+	public final static String DESPEDIDA="Adios, gracias por utilizar el programa.";
 	public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+	public static final DateTimeFormatter FORMATO_FECHA_NACIMIENTO = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+	//Empleado
+	public static final String NOMBRE_COMPLETO="Nombre Completo:\n";
+	public static final String CURP="CURP:\n";
+	public static final String RFC="RFC:\n";
+	public static final String DIRECCION="Direccion sin codigo Postal:\n";
+	public static final String CODIGO_POSTAL="Codigo Postal:\n";
+	public static final String FECHA_DE_NACIMIENTO="Fecha de Nacimiento, formato dd-MM-yyyy:\n";
+	public static final String PUESTO="Puesto(elige la opcion):\n 1)Empleado\n 2)Gerente\n";
+	public static final String GENERO="Genero(elige la opcion):\n 1)Masculino\n 2)Femenino\n";
+	public final static String INSERTADO="Se ha dado de Alta el empleado";
+	public final static String NO_INSERTADO="No se pudo dar de alta, vuelva a intentarlo";
+	
+	
+	//equivocaciones
+	public final static  String NOMBRE_EQUIVOCADO="Nombre Invalido, vuelva a intentarlo\n";
+	public final static  String RFC_EQUIVOCADA="RFC Invalido, vuelva a intentarlo\n";
+	public final static  String CURP_EQUIVOCADA="Curp Invalido, vuelva a intentarlo\n";
+	public final static  String DIRECCION_EQUIVOCADA="Direccion Invalida, vuelva a intentarlo\n";
+	public final static  String CODIGO_POSTAL_EQUIVOCADA="Direccion Invalida, vuelva a intentarlo\n";
+	public final static  String UNIDADES_EQUIVOCADA=" Unidades Invalido, vuelva a intentarlo\n";
 
+	
+	//cabeceras
 	public static final String CABECERA_EMPLEADO="Id empleado\t\tNombre Completo\t\tPuesto\t\tRFC\t\tCURP\t\tDirección\t\tGénero\t\tEstatus\t\tFecha de nacimiento\t\tAntigüedad\n";
-	
 	public static final String CABECERA_DEDUCCIONES="Id deducción\t\tId empleado\t\tNombre de la deducción\t\tTipo de deducción\t\tCantidad fija de la deducción\t\tPorcentaje\t\tPeriodo\n";
-	
 	public static final String CABECERA_PERCEPCIONES="Id percepciones\t\tId empleado\t\tNombre de la percepción\t\tTipo de la percepción\t\tCantidad fija de la percepción\t\tPeriodo\n";
-	
 	public static final String CABECERA_NOMINA="Id Empleado\t\tId de nomina\t\tFecha de nomina\t\tFaltas\t\tTotal\t\tTotal percepción\t\tTotal deducción\n";
-	
+	//enumeraciones
 	public enum BuscarPor{ID,NOMBRE,PUESTO,ESTATUS,ID_DEDUCCION,DEDUCCION_ID_EMPLEADO,ID_PERCEPCION,PERCEPCION_ID_EMPLEADO,ID_NOMINA,NOMINA_ID_EMPLEADO};
 	
 	public enum Movimientos{EDICION, INSERCION};
