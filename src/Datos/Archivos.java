@@ -137,6 +137,31 @@ public class Archivos {
 		}
 	}
 	
+	public boolean creaArchivoAuxiliar() {
+		boolean respuesta=false;
+		
+		File archivoAuxiliar=new File("archivo_auxiliar.txt");
+		
+		if(!archivoAuxiliar.exists())
+		{
+			try {
+				
+				archivoAuxiliar.createNewFile();
+				respuesta=true;
+				
+			} catch (IOException e) {
+				
+				throw new RuntimeException("Error al intentar crear el archivo archivo_auxiliar.txt");
+				
+			}
+		}else if(archivoAuxiliar.exists()) {
+			respuesta=true;
+		}
+		
+		return respuesta;
+	}
+	
+	
 	
 	public boolean guardaEmpleado(Empleado datos) {
 		boolean respuesta=false;
@@ -184,6 +209,53 @@ public class Archivos {
 		}catch(IOException ex) {
 			
 			System.out.println("Error al intentar leer el archivo.");
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean modificarPorIdEmpleado(int idEmpleado, int datoAEditar, Object dato) {
+		boolean respuesta=false;
+		
+		try {
+			
+			if(creaArchivoAuxiliar()==true)
+			{
+				FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UFT8"));
+				BufferedReader memoriaLectura=new BufferedReader(archivoLectura);
+				
+				FileWriter archivoAuxiliar=new FileWriter("archivo_auxiliar.txt",true);
+				BufferedWriter memoriaEscritura=new BufferedWriter(archivoAuxiliar);
+
+				String linea="";
+				while((linea=memoriaLectura.readLine())!=null) {
+
+
+					String[] auxiliar = linea.split("|");
+					if(auxiliar.length>0 && auxiliar[0]==String.valueOf(idEmpleado))
+					{
+
+						auxiliar[datoAEditar]=String.valueOf(dato);
+
+					}
+
+					String LineaModificada = String.join("|", auxiliar);
+					memoriaEscritura.write(LineaModificada);
+					memoriaEscritura.newLine();
+				}
+				memoriaLectura.close();
+				memoriaEscritura.close();
+				
+				File original = new File("lista_empleados.txt");
+				File reemplazo = new File("archivo_auxiliar.txt");
+				
+				original.delete();
+				reemplazo.renameTo(original);
+			}
+			
+			
+		}catch(IOException ex) {
+			
 		}
 		
 		return respuesta;
@@ -485,5 +557,7 @@ public class Archivos {
 		
 		return respuesta;
 	}
+	
+	
 	
 }
