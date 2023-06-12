@@ -3,8 +3,6 @@ package Entidades;
 import java.time.LocalDateTime;
 
 import Datos.Archivos;
-import Datos.ManipulacionArreglo;
-import Utilidades.Constantes.Deduccion;
 
 public class Nomina {
 	Archivos manipulacionArchivo= new Archivos();

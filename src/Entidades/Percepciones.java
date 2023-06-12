@@ -2,7 +2,6 @@ package Entidades;
 import java.time.LocalDateTime;
 import Utilidades.Constantes.Percepcion;
 import Datos.Archivos;
-import Datos.ManipulacionArreglo;
 public class Percepciones {
 	Archivos manipulacionArchivo= new Archivos();
 	private int idEmpleado;

@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import Utilidades.Constantes.*;
 import Datos.Archivos;
-import Datos.ManipulacionArreglo;
 public class Empleado {
 	
 	Archivos manipulacionArchivo= new Archivos();

@@ -2,7 +2,6 @@ package Entidades;
 import java.time.LocalDateTime;
 
 import Datos.Archivos;
-import Datos.ManipulacionArreglo;
 import Utilidades.Constantes.Deduccion;
 public class Deducciones {
 	Archivos manipulacionArchivo= new Archivos();

@@ -42,9 +42,9 @@ public class Constantes {
 	public static final String CABECERA_EMPLEADO="Id empleado\t|\tNombre Completo\t|\tPuesto\t|\tSueldo Por dia\t|\tRFC\t|\tCURP\t|\tDirección\t|\tGénero\t|\tEstatus\t|\tFecha de nacimiento\t|\tFecha de contratación\n";
 	public static final String CABECERA_DEDUCCIONES="Id deducción\t|\tId empleado\t|\tPeriodo\t|\tTipo de deducción\t|\tPorcentaje\n";
 	public static final String CABECERA_PERCEPCIONES="Id percepcion\t|\tId empleado\t|\tPeriodo\t|\tTipo de percepcion\t|\tPorcentaje\n";
-	public static final String CABECERA_NOMINA="Id Empleado\t|\tId de nomina\t|\tFecha de nomina\t|\tFaltas\t|\tTotal percepción\t|\tTotal deduccion\t|\tTotal\n";
+	public static final String CABECERA_NOMINA="Id Empleado\t|\tFecha de nomina\t|\tFaltas\t|\tTotal percepción\t|\tTotal deduccion\t|\tTotal\n";
 	//enumeraciones
-	public enum BuscarPor{ID,NOMBRE,PUESTO,GENERO,ESTATUS,ID_DEDUCCION,DEDUCCION_ID_EMPLEADO,ID_PERCEPCION,PERCEPCION_ID_EMPLEADO,ID_NOMINA,NOMINA_ID_EMPLEADO};
+	public enum BuscarPor{ID,NOMBRE,PUESTO,GENERO,ESTATUS};
 	
 	public enum Movimientos{EDICION, INSERCION};
 	

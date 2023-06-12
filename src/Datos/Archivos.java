@@ -60,6 +60,7 @@ package Datos;
 */
 import java.io.*;
 import java.nio.charset.Charset;
+import java.time.LocalDate;
 
 import Entidades.Deducciones;
 import Entidades.Empleado;
@@ -706,8 +707,8 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && !(auxiliar[0]==String.valueOf(idDeduccion)))
+					String[] auxiliar = linea.split("\\|");
+					if(auxiliar.length>0 && !(auxiliar[0].equalsIgnoreCase(String.valueOf(idDeduccion))))
 					{
 
 						memoriaEscritura.write(linea);
@@ -753,8 +754,8 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)))
+					String[] auxiliar = linea.split("\\|");
+					if(auxiliar.length>0 && !(auxiliar[1].equalsIgnoreCase(String.valueOf(idEmpleado))))
 					{
 
 						memoriaEscritura.write(linea);
@@ -783,7 +784,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean editarDeduccion(int idDeduccion, Object dato) {
+	public boolean editarDeduccion(int idDeduccion, Deduccion dato) {
 		boolean respuesta=false;
 		
 		try {
@@ -800,11 +801,12 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
+					String[] auxiliar = linea.split("\\|");
 					if(auxiliar.length>0 && auxiliar[0].equalsIgnoreCase(String.valueOf(idDeduccion)))
 					{
 
-						auxiliar[4]=String.valueOf(dato);
+						auxiliar[3]=String.valueOf(dato.getNombreDeduccion());
+						auxiliar[4]=String.valueOf(dato.getPorcentajeDeLaDeduccion());
 						String LineaModificada = String.join("|", auxiliar);
 						memoriaEscritura.write(LineaModificada);
 						memoriaEscritura.newLine();
@@ -955,8 +957,8 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && !(auxiliar[0]==String.valueOf(idPercepcion)))
+					String[] auxiliar = linea.split("\\|");
+					if(auxiliar.length>0 && !(auxiliar[0].equalsIgnoreCase(String.valueOf(idPercepcion))))
 					{
 
 						memoriaEscritura.write(linea);
@@ -985,7 +987,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean eliminarPercepciones(int idEmpleado) {
+	public boolean eliminarPercepcionesDeEmpleado(int idEmpleado) {
 		boolean respuesta=false;
 		
 		try {
@@ -1002,8 +1004,8 @@ public class Archivos {
 				while((linea=memoriaLectura.readLine())!=null) {
 
 
-					String[] auxiliar = linea.split("|");
-					if(auxiliar.length>0 && !(auxiliar[1]==String.valueOf(idEmpleado)))
+					String[] auxiliar = linea.split("\\|");
+					if(auxiliar.length>0 && !auxiliar[1].equalsIgnoreCase(String.valueOf(idEmpleado)))
 					{
 
 						memoriaEscritura.write(linea);
@@ -1032,7 +1034,7 @@ public class Archivos {
 		return respuesta;
 	}
 	
-	public boolean editarPercepcion(int idPercepcion, Object dato) {
+	public boolean editarPercepcion(int idPercepcion, Percepcion dato) {
 		boolean respuesta=false;
 		
 		try {
@@ -1052,8 +1054,8 @@ public class Archivos {
 					String[] auxiliar = linea.split("\\|");
 					if(auxiliar.length>0 && auxiliar[0].equalsIgnoreCase(String.valueOf(idPercepcion)))
 					{
-
-						auxiliar[4]=String.valueOf(dato);
+						auxiliar[3]=String.valueOf(dato.getNombrePercepcion());
+						auxiliar[4]=String.valueOf(dato.getPorcentajeDeLaPercepcion());
 						String LineaModificada = String.join("|", auxiliar);
 						memoriaEscritura.write(LineaModificada);
 						memoriaEscritura.newLine();
@@ -1233,6 +1235,99 @@ public class Archivos {
 		
 		
 		return total;
+	}
+	
+	public float total(int idEmpleado) {
+		
+		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
+		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
+		float total=0;
+		
+			String[] empleado=empleadoCompleto[0].split("|");
+			total=(contadorAsistencias*Float.parseFloat(empleado[3]));
+		
+		
+		return total;
+		
+	}
+	
+	public boolean mostrarNominaPorEmpleado(int idEmpleado) {
+		boolean respuesta=false;
+		String nombreEmpleado=null;
+		String nombreInicial="nombre.txt";
+		
+		try {
+
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+
+			String linea="";
+			while(linea!=null) {
+
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[0])==idEmpleado)
+					{
+						nombreEmpleado=auxiliar[1];
+						
+					}
+					
+				}
+				
+			}
+			archivoLectura.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		//-------------------------------------
+		
+		
+		if(nombreEmpleado!=null)
+		{
+			String nombreArchivo=nombreInicial.replace("nombre", nombreEmpleado);
+			File nomina=new File(nombreArchivo);
+			
+			if(!nomina.exists())
+			{
+				
+				try {
+					
+					nomina.createNewFile();
+					
+				} catch (IOException e) {
+					
+					throw new RuntimeException("Error al intentar crear el archivo "+ nombreArchivo);
+					
+				}
+				
+			}
+			
+			try {
+				
+				FileWriter archivo=new FileWriter(nombreArchivo,true);
+				
+				archivo.write(String.valueOf(Constantes.CABECERA_NOMINA + String.valueOf(idEmpleado) + "|" + LocalDate.now().toString() + "|" + String.valueOf(numeroDeAsistencias(idEmpleado)>=30?0:31-numeroDeAsistencias(idEmpleado)) + "|" + String.valueOf(total(idEmpleado)+operacionesPercepciones(idEmpleado)+operacionesDeducciones(idEmpleado)) + "\n"));
+				
+				archivo.close();
+				respuesta=true;
+				
+			}catch(IOException ex) {
+				
+				System.out.println("No se ha encontrado el archivo.");
+				
+			}
+			
+		}
+
+		
+		return respuesta;
 	}
 	
 }
