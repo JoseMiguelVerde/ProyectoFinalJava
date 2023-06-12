@@ -543,7 +543,7 @@ public class Archivos {
 			
 			FileWriter archivo=new FileWriter("lista_deducciones.txt",true);
 			
-			archivo.write(String.valueOf(datos.getIdDeduccion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoDeduccion().getNombreDeduccion()+ "|"  + datos.getTipoDeduccion().getPorcentajeDeLaDeduccion() + "%"  + "\n");
+			archivo.write(String.valueOf(datos.getIdDeduccion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoDeduccion().getNombreDeduccion()+ "|"  + datos.getTipoDeduccion().getPorcentajeDeLaDeduccion()+ "\n");
 			
 			archivo.close();
 			respuesta=true;
@@ -741,7 +741,7 @@ public class Archivos {
 			
 			FileWriter archivo=new FileWriter("lista_percepciones.txt",true);
 			
-			archivo.write(String.valueOf(datos.getIdPercepcion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoPercepcion().getNombrePercepcion()+ "|"  + datos.getTipoPercepcion().getPorcentajeDeLaPercepcion() + "%" + "\n");
+			archivo.write(String.valueOf(datos.getIdPercepcion()) + "|" + String.valueOf(datos.getIdEmpleado()) + "|" + datos.getFecha().toString() + "|" + datos.getTipoPercepcion().getNombrePercepcion()+ "|"  + datos.getTipoPercepcion().getPorcentajeDeLaPercepcion()+ "\n");
 			
 			archivo.close();
 			respuesta=true;
@@ -999,5 +999,19 @@ public class Archivos {
 		
 		return respuesta;
 	}
-	
+	public float operacionesDeduccionesYPercepciones(int idEmpleado) {
+		float respuesta=0;
+		String[] percepcionesPorEmpleado=buscarPercepcion(BuscarPor.ID, idEmpleado);
+		String[] deduccionesPorEmpleado=buscarDeduccion(BuscarPor.ID, idEmpleado);
+		float contador=0;
+		float auxiliar=0;
+		
+		for(int i=0;i<percepcionesPorEmpleado.length;i++) {
+			String[] percepcion=percepcionesPorEmpleado[i].split("|");
+			auxiliar=(Float.parseFloat(percepcion[3]));
+		}
+		
+		
+		return respuesta;
+	}
 }

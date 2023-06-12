@@ -39,10 +39,10 @@ public class Constantes {
 
 	
 	//cabeceras
-	public static final String CABECERA_EMPLEADO="Id empleado\t\tNombre Completo\t\tPuesto\t\tRFC\t\tCURP\t\tDirección\t\tGénero\t\tEstatus\t\tFecha de nacimiento\t\tAntigüedad\n";
-	public static final String CABECERA_DEDUCCIONES="Id deducción\t\tId empleado\t\tNombre de la deducción\t\tTipo de deducción\t\tCantidad fija de la deducción\t\tPorcentaje\t\tPeriodo\n";
-	public static final String CABECERA_PERCEPCIONES="Id percepciones\t\tId empleado\t\tNombre de la percepción\t\tTipo de la percepción\t\tCantidad fija de la percepción\t\tPeriodo\n";
-	public static final String CABECERA_NOMINA="Id Empleado\t\tId de nomina\t\tFecha de nomina\t\tFaltas\t\tTotal\t\tTotal percepción\t\tTotal deducción\n";
+	public static final String CABECERA_EMPLEADO="Id empleado\t|\tNombre Completo\t|\tPuesto\t|\tSueldo Por dia\t|\tRFC\t|\tCURP\t|\tDirección\t|\tGénero\t|\tEstatus\t|\tFecha de nacimiento\t\n";
+	public static final String CABECERA_DEDUCCIONES="Id deducción\t|\tId empleado\t|\tPeriodo\t|\tTipo de deducción\t|\tPorcentaje\n";
+	public static final String CABECERA_PERCEPCIONES="Id percepcion\t|\tId empleado\t|\tPeriodo\t|\tTipo de percepcion\t|\tPorcentaje\n";
+	public static final String CABECERA_NOMINA="Id Empleado\t|\tId de nomina\t|\tFecha de nomina\t|\tFaltas\t|\tTotal percepción\t|\tTotal deduccion\t|\tTotal\n";
 	//enumeraciones
 	public enum BuscarPor{ID,NOMBRE,PUESTO,ESTATUS,ID_DEDUCCION,DEDUCCION_ID_EMPLEADO,ID_PERCEPCION,PERCEPCION_ID_EMPLEADO,ID_NOMINA,NOMINA_ID_EMPLEADO};
 	
@@ -149,7 +149,7 @@ public class Constantes {
 	}
 	
 	public enum Percepcion{
-		COMISION(0,"Comision",3),BONO(1,"Bono",5),PRIMA_VACACIONAL(2,"Prima Vacasional",25); // el 3, 5 y 25 son los porcentajes de cada percepcion
+		COMISION(0,"Comision",6),BONO(1,"Bono",10),PRIMA_VACACIONAL(2,"Prima Vacasional",50); // el 3, 5 y 25 son los porcentajes de cada percepcion(mensuales)
 		private int idPercepcion;
 		private String nombrePercepcion;
 		private int porcentajeDeLaPercepcion;
@@ -175,7 +175,7 @@ public class Constantes {
 		
 	}
 	public enum Deduccion{
-		FORMACION_PROFESIONAL(0,"Formacion Profecional",2f),CONTINGENCIA_COMUN(1,"Contingencia Comun",4f),SEGURO_MEDICO(2,"Seguro Medico",4.5f); // el 2, 4 y 4.5 son los porcentajes de cada percepcion
+		FORMACION_PROFESIONAL(0,"Formacion Profecional",4f),CONTINGENCIA_COMUN(1,"Contingencia Comun",8f),SEGURO_MEDICO(2,"Seguro Medico",9f); // el 4, 8 y 9 son los porcentajes de cada deduccion (mensuales)
 		private int idDeduccion;
 		private String nombreDeduccion;
 		private float porcentajeDeLaDeduccion;
