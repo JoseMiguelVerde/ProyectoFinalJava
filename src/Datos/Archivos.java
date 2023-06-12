@@ -479,28 +479,21 @@ public class Archivos {
 
 					}
 					
-					if(tipo==BuscarPor.PUESTO && valor==Puesto.EMPLEADO)
+					if(tipo==BuscarPor.PUESTO && auxiliar[2].equalsIgnoreCase((String)valor))
 					{
 						
 						contador++;
 						
 					}
 					
-					if(tipo==BuscarPor.PUESTO && valor==Puesto.GERENTE)
+					if(tipo==BuscarPor.GENERO && auxiliar[7].equalsIgnoreCase((String)valor))
 					{
 						
 						contador++;
 						
 					}
 					
-					if(tipo==BuscarPor.GENERO && valor==Generos.FEMENINO)
-					{
-						
-						contador++;
-						
-					}
-					
-					if(tipo==BuscarPor.GENERO && valor==Generos.MASCULINO)
+					if(tipo==BuscarPor.ESTATUS && auxiliar[8].equalsIgnoreCase((String)valor))
 					{
 						
 						contador++;
@@ -554,7 +547,7 @@ public class Archivos {
 							
 						}
 						
-						if(tipo==BuscarPor.PUESTO && valor==Puesto.EMPLEADO)
+						if(tipo==BuscarPor.PUESTO && auxiliar[2].equalsIgnoreCase((String)valor))
 						{
 							
 							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
@@ -562,7 +555,7 @@ public class Archivos {
 							
 						}
 						
-						if(tipo==BuscarPor.PUESTO && valor==Puesto.GERENTE)
+						if(tipo==BuscarPor.GENERO && auxiliar[7].equalsIgnoreCase((String)valor))
 						{
 							
 							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
@@ -570,15 +563,7 @@ public class Archivos {
 							
 						}
 						
-						if(tipo==BuscarPor.GENERO && valor==Generos.FEMENINO)
-						{
-							
-							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
-							j++;
-							
-						}
-						
-						if(tipo==BuscarPor.GENERO && valor==Generos.MASCULINO)
+						if(tipo==BuscarPor.ESTATUS && auxiliar[8].equalsIgnoreCase((String)valor))
 						{
 							
 							respuesta[j]=auxiliar[0] + "|" + auxiliar[1] + "|" + auxiliar[2] + "|" + auxiliar[3] + "|" + auxiliar[4] + "|" + auxiliar[5] + "|" + auxiliar[6] + "|" + auxiliar[7] + "|" + auxiliar[8] + "|" + auxiliar[9] + "|" + auxiliar[10];
@@ -1207,7 +1192,7 @@ public class Archivos {
 	}
 	
 	public float operacionesPercepciones(int idEmpleado) {
-		float respuesta=0;
+		
 		String[] percepcionesPorEmpleado=buscarPercepcion(BuscarPor.ID, idEmpleado);
 		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
 		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
@@ -1228,11 +1213,11 @@ public class Archivos {
 		}
 		
 		
-		return respuesta=total;
+		return total;
 	}
 	
 	public float operacionesDeducciones(int idEmpleado) {
-		float respuesta=0;
+
 		String[] deduccionesPorEmpleado=buscarDeduccion(BuscarPor.ID, idEmpleado);
 		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
 		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
@@ -1247,7 +1232,7 @@ public class Archivos {
 		}
 		
 		
-		return respuesta=total;
+		return total;
 	}
 	
 }
