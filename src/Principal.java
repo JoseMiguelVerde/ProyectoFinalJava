@@ -7,6 +7,7 @@ import Utilidades.Constantes.BuscarPor;
 import Utilidades.Constantes.Deduccion;
 import Utilidades.Constantes.Estatus;
 import Utilidades.Constantes.Generos;
+import Utilidades.Constantes.Percepcion;
 import Utilidades.Constantes.Puesto;
 import Utilidades.Validaciones;
 import java.io.*;
@@ -635,10 +636,10 @@ public class Principal {
 																	idDeduccion=leer.nextLine();
 																	if(validar.validarEntero(idDeduccion)) {
 																		if(manipulacionArchivos.eliminarUnaDeduccion(Integer.parseInt(idDeduccion))) {
-																			System.out.println(Constantes.ELIMINADO_DEDUCCION_PERCEPCION);	
+																			System.out.println(Constantes.ELIMINADO_DEDUCCION);	
 																			ciclo=false;
 																		}else {
-																			System.out.println(Constantes.NO_ELIMINADO_DEDUCCION_PERCEPCION);
+																			System.out.println(Constantes.NO_ELIMINADO_DEDUCCION);
 																			ciclo=false;
 																		}
 																	}else {
@@ -655,10 +656,10 @@ public class Principal {
 																	idEmpleado=leer.nextLine();
 																	if(validar.validarEntero(idEmpleado)&& validar.existeId(Integer.parseInt(idEmpleado))) {
 																		if(manipulacionArchivos.eliminarDeduccionesDeEmpleado(Integer.parseInt(idEmpleado))) {
-																			System.out.println(Constantes.ELIMINADO_DEDUCCION_PERCEPCION);	
+																			System.out.println(Constantes.ELIMINADO_DEDUCCION);	
 																			ciclo=false;
 																		}else {
-																			System.out.println(Constantes.NO_ELIMINADO_DEDUCCION_PERCEPCION);
+																			System.out.println(Constantes.NO_ELIMINADO_DEDUCCION);
 																			ciclo=false;
 																		}
 																		
@@ -696,10 +697,10 @@ public class Principal {
 															deduccion=leer.nextLine();
 															if(validar.deduccionYPercepcionOpcion(deduccion)) {
 																if(manipulacionArchivos.editarDeduccion(Integer.parseInt(idDeduccion), (Integer.parseInt(deduccion)==1?Deduccion.FORMACION_PROFESIONAL:(Integer.parseInt(deduccion)==2?Deduccion.CONTINGENCIA_COMUN:Deduccion.SEGURO_MEDICO)))) {
-																	System.out.println(Constantes.EDITADO);	
+																	System.out.println(Constantes.EDITADO_DEDUCCION);	
 																	ciclo=false;
 																}else {
-																	System.out.println(Constantes.NO_EDITADO);
+																	System.out.println(Constantes.NO_EDITADO_DEDUCCION);
 																	ciclo=false;
 																}
 															}else {
@@ -725,7 +726,7 @@ public class Principal {
 													System.out.println(Constantes.MOSTRAR_DEDUCCIONES);
 													idEmpleado=leer.nextLine();
 													if(validar.validarEntero(idEmpleado)&& validar.existeId(Integer.parseInt(idEmpleado))) {
-														System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarDeduccion(BuscarPor.ID, idEmpleado), 2));
+														System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarDeduccion(BuscarPor.ID, Integer.parseInt(idEmpleado)), 2));
 														ciclo=false;
 													}else {
 														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
@@ -758,13 +759,155 @@ public class Principal {
 										switch(Integer.parseInt(opcion))
 										{
 										case 1:
+											if(validar.contenidoDeArchivoEmpleados()){
+												do {
+													System.out.println(Constantes.AGREGAR_PERCEPCIONES);
+													idEmpleado=leer.nextLine();
+													if(validar.validarEntero(idEmpleado)&& validar.existeId(Integer.parseInt(idEmpleado))) {
+														do{
+															System.out.println(Constantes.TIPOS_PERCEPCIONES);
+															percepcion=leer.nextLine();
+															if(validar.deduccionYPercepcionOpcion(percepcion)) {
+																if(manipulacionArchivos.agregarPercepcion(new Percepciones(Integer.parseInt(idEmpleado),(Integer.parseInt(percepcion)==1?Percepcion.COMISION:(Integer.parseInt(percepcion)==2?Percepcion.BONO:Percepcion.PRIMA_VACACIONAL))))) {
+																	System.out.println(Constantes.AGREGADO_PERCEPCIONES);	
+																	ciclo=false;
+																}else {
+																	System.out.println(Constantes.NO_AGREGADO_PERCEPCIONES);
+																	ciclo=false;
+																}
+															}else {
+																System.out.println(Constantes.OPCION_INVALIDA);
+																ciclo=true;
+															}
+														}while(ciclo);
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+													
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											
 											break;
 										case 2:
+											if(validar.contenidoDeArchivoPercepciones()){
+												do {
+													System.out.println(Constantes.ELIMINAR_PERCEPCIONES);
+													opcion=leer.nextLine();
+													if(validar.validarEntero(opcion)) {
+														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=2) {
+															switch(Integer.parseInt(opcion))
+															{
+															case 1:
+																do {
+																	System.out.println(Constantes.DAME_ID_PERCEPCIONES);
+																	idPercepcion=leer.nextLine();
+																	if(validar.validarEntero(idPercepcion)) {
+																		if(manipulacionArchivos.eliminarUnaDeduccion(Integer.parseInt(idPercepcion))) {
+																			System.out.println(Constantes.ELIMINADO_PERCEPCION);	
+																			ciclo=false;
+																		}else {
+																			System.out.println(Constantes.NO_ELIMINADO_PERCEPCION);
+																			ciclo=false;
+																		}
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+															
+																break;
+															case 2:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)&& validar.existeId(Integer.parseInt(idEmpleado))) {
+																		if(manipulacionArchivos.eliminarPercepcionesDeEmpleado(Integer.parseInt(idEmpleado))) {
+																			System.out.println(Constantes.ELIMINADO_PERCEPCION);	
+																			ciclo=false;
+																		}else {
+																			System.out.println(Constantes.NO_ELIMINADO_PERCEPCION);
+																			ciclo=false;
+																		}
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																break;
+															}
+															
+														}else {
+															System.out.println(Constantes.OPCION_INVALIDA);
+															ciclo=true;
+														}
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											break;
 										case 3:
+											if(validar.contenidoDeArchivoPercepciones()){
+												do {
+													System.out.println(Constantes.EDITAR_PERCEPCIONES);
+													idPercepcion=leer.nextLine();
+													if(validar.validarEntero(idPercepcion)) {
+														do{
+															System.out.println(Constantes.TIPOS_PERCEPCIONES);
+															percepcion=leer.nextLine();
+															if(validar.deduccionYPercepcionOpcion(percepcion)) {
+																if(manipulacionArchivos.editarPercepcion(Integer.parseInt(idPercepcion), (Integer.parseInt(percepcion)==1?Percepcion.COMISION:(Integer.parseInt(percepcion)==2?Percepcion.BONO:Percepcion.PRIMA_VACACIONAL)))) {
+																	System.out.println(Constantes.EDITADO_PERCEPCION);	
+																	ciclo=false;
+																}else {
+																	System.out.println(Constantes.NO_EDITADO_PERCEPCION);
+																	ciclo=false;
+																}
+															}else {
+																System.out.println(Constantes.OPCION_INVALIDA);
+																ciclo=true;
+															}
+														}while(ciclo);
+														
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+													
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											break;
 										case 4:
+											if(validar.contenidoDeArchivoPercepciones()){
+												do {
+													System.out.println(Constantes.MOSTRAR_PERCEPCIONES);
+													idEmpleado=leer.nextLine();
+													if(validar.validarEntero(idEmpleado)&& validar.existeId(Integer.parseInt(idEmpleado))) {
+														System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarPercepcion(BuscarPor.ID, Integer.parseInt(idEmpleado)), 3));
+														ciclo=false;
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											break;
 										}
 									}else {

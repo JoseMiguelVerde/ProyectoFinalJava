@@ -50,14 +50,26 @@ public class Constantes {
 	public static final String AGREGADO="Se agrego la deduccion\n";
 	public static final String NO_AGREGADO="No se pudo agregar la deduccion\n";
 	public static final String ELIMINAR_DEDUCCIONES="\tEliminar\n 1)Por id de Deduccion \n 2)Todas las deducciones de un empleado\n";
-	public static final String ELIMINADO_DEDUCCION_PERCEPCION="Se Elimino la deduccion\n";
-	public static final String NO_ELIMINADO_DEDUCCION_PERCEPCION="No se pudo Eliminar la deduccion\n";
+	public static final String ELIMINADO_DEDUCCION="Se Elimino la deduccion\n";
+	public static final String NO_ELIMINADO_DEDUCCION="No se pudo Eliminar la deduccion\n";
 	public static final String EDITAR_DEDUCCIONES="\tEditar Tipo de deduccion\n Dame el id de la deduccion:\n";
-	public static final String EDITADO_DEDUCCION_PERCEPCION="Se Edito la deduccion\n";
-	public static final String NO_EDITADO_DEDUCCION_PERCEPCION="No se pudo Editar la deduccion\n";
+	public static final String EDITADO_DEDUCCION="Se Edito la deduccion\n";
+	public static final String NO_EDITADO_DEDUCCION="No se pudo Editar la deduccion\n";
 	public static final String MOSTRAR_DEDUCCIONES="\tMostrar deducciones Por id de Empledo\n Dame id de empleado:";
 	public final static String DAME_ID_DEDUCCIONES="Dame el id de la deduccion:\n";
 	//Percepciones
+	public static final String TIPOS_PERCEPCIONES="Tipos de percepcion(elige la opcion que le quieras agregar al empleado):\n 1)Comision\n 2)Bono\n3)Prima Vacacional\n";
+	public static final String AGREGAR_PERCEPCIONES="\tAgregar Percepcion\nDame el id del Empleado a agregar la percepcion:\n";
+	public static final String AGREGADO_PERCEPCIONES="Se agrego la Percepcion\n";
+	public static final String NO_AGREGADO_PERCEPCIONES="No se pudo agregar la percepcion\n";
+	public static final String ELIMINAR_PERCEPCIONES="\tEliminar\n 1)Por id de Percepcion \n 2)Todas las percepciones de un empleado\n";
+	public static final String ELIMINADO_PERCEPCION="Se Elimino la percepcion\n";
+	public static final String NO_ELIMINADO_PERCEPCION="No se pudo Eliminar la percepcion\n";
+	public static final String EDITAR_PERCEPCIONES="\tEditar Tipo de percepcion\n Dame el id de la percepcion:\n";
+	public static final String EDITADO_PERCEPCION="Se Edito la percepcion\n";
+	public static final String NO_EDITADO_PERCEPCION="No se pudo Editar la percepcion\n";
+	public static final String MOSTRAR_PERCEPCIONES="\tMostrar percepciones Por id de Empledo\n Dame id de empleado:";
+	public final static String DAME_ID_PERCEPCIONES="Dame el id de la percepcion:\n";
 	
 	//Nomina
 	public final static String ERROR_AL_CREAR_NOMINA="No se pudo crear el recibo de nomina.";
