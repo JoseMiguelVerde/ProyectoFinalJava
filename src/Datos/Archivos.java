@@ -1328,7 +1328,7 @@ public float operacionesPercepciones(int idEmpleado) {
 
 				FileWriter archivo=new FileWriter(nombreArchivo,true);
 
-				archivo.write(String.valueOf(Constantes.CABECERA_NOMINA + String.valueOf(idEmpleado) + "|" + LocalDate.now().toString() + "|" + String.valueOf(numeroDeAsistencias(idEmpleado)>=30?0:31-numeroDeAsistencias(idEmpleado)) + "|" + operacionesPercepciones(idEmpleado) + "|" + operacionesDeducciones(idEmpleado) + "|"+ String.valueOf(totalSalario(idEmpleado)) + "\n"));
+				archivo.write(String.valueOf(Constantes.CABECERA_NOMINA + String.valueOf(idEmpleado) + "|" + LocalDate.now().toString() + "|" + String.valueOf(numeroDeAsistencias(idEmpleado)>=30?0:30-numeroDeAsistencias(idEmpleado)) + "|" + operacionesPercepciones(idEmpleado) + "|" + operacionesDeducciones(idEmpleado) + "|"+ String.valueOf(totalSalario(idEmpleado)) + "\n"));
 
 				archivo.close();
 				respuesta=true;

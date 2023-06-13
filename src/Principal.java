@@ -806,7 +806,7 @@ public class Principal {
 																	System.out.println(Constantes.DAME_ID_PERCEPCIONES);
 																	idPercepcion=leer.nextLine();
 																	if(validar.validarEntero(idPercepcion)) {
-																		if(manipulacionArchivos.eliminarUnaDeduccion(Integer.parseInt(idPercepcion))) {
+																		if(manipulacionArchivos.eliminarUnaPercepcion(Integer.parseInt(idPercepcion))) {
 																			System.out.println(Constantes.ELIMINADO_PERCEPCION);	
 																			ciclo=false;
 																		}else {
@@ -927,7 +927,7 @@ public class Principal {
 									idEmpleado=leer.nextLine();
 									if(validar.validarEntero(idEmpleado)) {
 										if(manipulacionArchivos.mostrarNominaPorEmpleado(Integer.parseInt(idEmpleado))) {
-											manipulacionArchivos.mostrarNominaPorEmpleadoEnConsola(Integer.parseInt(idEmpleado));
+											System.out.println(manipulacionArchivos.mostrarNominaPorEmpleadoEnConsola(Integer.parseInt(idEmpleado)));
 											ciclo=false;
 										}else {
 											System.out.println(Constantes.ERROR_AL_CREAR_NOMINA);
