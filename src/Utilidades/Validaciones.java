@@ -46,6 +46,31 @@ public class Validaciones {
 		}
 		return respuesta;
 	}
+	public boolean existeId(int id) {
+		boolean respuesta=false;
+				
+		try {
+			FileReader archivo=new FileReader("lista_empleados.txt");
+			BufferedReader memoria=new BufferedReader(archivo);
+			
+			String linea="";
+			while(linea!=null) {
+				linea=memoria.readLine();
+				if(linea!=null) {
+					String[] auxiliar =linea.split("\\|");
+					if(auxiliar[0]==String.valueOf(id)) {
+						respuesta=true;
+						break;
+					}
+				}
+			}
+			archivo.close();
+		}catch(IOException ex) {
+			throw new RuntimeException("Error al intentar leer el archivo.");
+		}
+		
+		return respuesta;		
+	}
 
 	public boolean validaCurpUnico(String curp) {
 		boolean respuesta=false;

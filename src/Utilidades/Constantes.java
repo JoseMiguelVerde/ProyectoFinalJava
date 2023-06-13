@@ -10,7 +10,7 @@ public class Constantes {
 	public static final String MENU_DEDUCCIONES="Selecciona una opcion:\n1)Agregar\n2)Eliminar \n3)Modificar\n4)Consultar\n";
 	public static final String MENU_PERCEPCIONES="Selecciona una opcion:\n1)Agregar\n2)Eliminar \n3)Modificar\n4)Consultar\n";
 	public static final String VOLVER_AL_MENU="\n¿Quiere volver al menu? \n1) Si \nsi quiere salir del programa presione cualquier tecla";
-	public final static String INGRESAR_VALOR_NUMERICO="Debe ingresar un valor numerico.";
+	public final static String INGRESAR_VALOR_NUMERICO="Debe ingresar un valor numerico y correcto.";
 	public final static String OPCION_INVALIDA="Opcion invalida, escoga un numero de la opcion del menu";
 	public final static String DESPEDIDA="Adios, gracias por utilizar el programa.";
 	public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
@@ -50,8 +50,13 @@ public class Constantes {
 	public static final String AGREGADO="Se agrego la deduccion\n";
 	public static final String NO_AGREGADO="No se pudo agregar la deduccion\n";
 	public static final String ELIMINAR_DEDUCCIONES="\tEliminar\n 1)Por id de Deduccion \n 2)Todas las deducciones de un empleado\n";
+	public static final String ELIMINADO_DEDUCCION_PERCEPCION="Se Elimino la deduccion\n";
+	public static final String NO_ELIMINADO_DEDUCCION_PERCEPCION="No se pudo Eliminar la deduccion\n";
 	public static final String EDITAR_DEDUCCIONES="\tEditar Tipo de deduccion\n Dame el id de la deduccion:\n";
+	public static final String EDITADO_DEDUCCION_PERCEPCION="Se Edito la deduccion\n";
+	public static final String NO_EDITADO_DEDUCCION_PERCEPCION="No se pudo Editar la deduccion\n";
 	public static final String MOSTRAR_DEDUCCIONES="\tMostrar deducciones Por id de Empledo\n Dame id de empleado:";
+	public final static String DAME_ID_DEDUCCIONES="Dame el id de la deduccion:\n";
 	//Percepciones
 	
 	//Nomina
