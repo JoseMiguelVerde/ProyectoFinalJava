@@ -30,7 +30,7 @@ public class Constantes {
 	public final static String INSERTADO="Se ha dado de Alta el empleado";
 	public final static String NO_INSERTADO="No se pudo dar de alta, vuelva a intentarlo";
 	
-	public final static String BAJA_EMPLEADO="\tBaja Empleado\n1)Logica\n2)Fisica\n";
+	public final static String BAJA_EMPLEADO="\tBaja Empleado\n1)Logica(Se le cambiará el estatus a BAJA)\n2)Fisica(Se borrarán todos los datos del empleado, incluyendo percepciones y deducciones.)\n";
 	public final static String ELIMINADO="Se ha dado de Baja el empleado";
 	public final static String NO_ELIMINADO="No se pudo dar de Baja, vuelva a intentarlo";
 	public final static String NO_HAY_DATOS="No hay datos en el archivo\n";
