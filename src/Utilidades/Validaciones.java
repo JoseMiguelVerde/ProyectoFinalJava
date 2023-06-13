@@ -58,7 +58,7 @@ public class Validaciones {
 				linea=memoria.readLine();
 				if(linea!=null) {
 					String[] auxiliar =linea.split("\\|");
-					if(auxiliar[0]==String.valueOf(id)) {
+					if(auxiliar[0].equalsIgnoreCase(String.valueOf(id))) {
 						respuesta=true;
 						break;
 					}
@@ -147,8 +147,10 @@ public class Validaciones {
 	public boolean puestoYGenero(String valor) {
 		boolean respuesta=false;
 		try {
-			if(Integer.parseInt(valor)>=1 && Integer.parseInt(valor)<=2);
-			respuesta = true;
+			if(Integer.parseInt(valor)>=1 && Integer.parseInt(valor)<=2) {
+				respuesta = true;
+			}
+			
 		} catch (Exception ex) {
 			respuesta = false;
 		}
@@ -157,8 +159,10 @@ public class Validaciones {
 	public boolean deduccionYPercepcionOpcion(String valor) {
 		boolean respuesta=false;
 		try {
-			if(Integer.parseInt(valor)>=1 && Integer.parseInt(valor)<=3);
-			respuesta = true;
+			if(Integer.parseInt(valor)>=1 && Integer.parseInt(valor)<=3) {
+				respuesta = true;
+			}
+			
 		} catch (Exception ex) {
 			respuesta = false;
 		}

@@ -688,23 +688,31 @@ public class Principal {
 										case 3:
 											if(validar.contenidoDeArchivoDeducciones()){
 												do {
-													System.out.println(Constantes.AGREGAR_DEDUCCIONES);
-													opcion=leer.nextLine();
-													if(validar.validarEntero(opcion)) {
-														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=6) {
-															switch(Integer.parseInt(opcion))
-															{
-															
+													System.out.println(Constantes.EDITAR_DEDUCCIONES);
+													idDeduccion=leer.nextLine();
+													if(validar.validarEntero(idDeduccion)) {
+														do{
+															System.out.println(Constantes.TIPOS_DEDUCCIONES);
+															deduccion=leer.nextLine();
+															if(validar.deduccionYPercepcionOpcion(deduccion)) {
+																if(manipulacionArchivos.editarDeduccion(Integer.parseInt(idDeduccion), (Integer.parseInt(deduccion)==1?Deduccion.FORMACION_PROFESIONAL:(Integer.parseInt(deduccion)==2?Deduccion.CONTINGENCIA_COMUN:Deduccion.SEGURO_MEDICO)))) {
+																	System.out.println(Constantes.EDITADO);	
+																	ciclo=false;
+																}else {
+																	System.out.println(Constantes.NO_EDITADO);
+																	ciclo=false;
+																}
+															}else {
+																System.out.println(Constantes.OPCION_INVALIDA);
+																ciclo=true;
 															}
-															
-														}else {
-															System.out.println(Constantes.OPCION_INVALIDA);
-															ciclo=true;
-														}
+														}while(ciclo);
+														
 													}else {
 														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
 														ciclo=true;
 													}
+													
 												}while(ciclo);
 											}else {
 												System.out.println(Constantes.NO_HAY_DATOS);
