@@ -18,7 +18,7 @@ public class Principal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner leer=new Scanner(System.in);
-		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero,idEmpleado;
+		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero,idEmpleado, estatus;
 		boolean ciclo=false;
 		Validaciones validar=new Validaciones();
 		Archivos manipulacionArchivos= new Archivos();
@@ -530,6 +530,19 @@ public class Principal {
 																}while(ciclo);
 																break;
 															case 5:
+																do {
+																	System.out.println(Constantes.ESTATUS);
+																	estatus=leer.nextLine();
+																	if(validar.puestoYGenero(estatus)) {
+																		System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarEnListaEmpleados(BuscarPor.ESTATUS, (Integer.parseInt(estatus)==1?Estatus.ACTIVO.getEstatus():Estatus.BAJA.getEstatus())), 1));
+																		ciclo=false;
+																	}else {
+																		System.out.println(Constantes.OPCION_INVALIDA);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																break;
+															case 6:
 																System.out.println(manipulacionArchivos.mostrarTodosEmpledos());
 																break;
 															}

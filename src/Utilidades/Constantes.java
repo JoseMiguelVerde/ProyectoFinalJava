@@ -26,6 +26,7 @@ public class Constantes {
 	public static final String FECHA_DE_NACIMIENTO="Fecha de Nacimiento, formato dd-MM-yyyy:\n";
 	public static final String PUESTO="Puesto(elige la opcion):\n 1)Empleado\n 2)Gerente\n";
 	public static final String GENERO="Genero(elige la opcion):\n 1)Masculino\n 2)Femenino\n";
+	public static final String ESTATUS="Estatus(elige la opcion):\n 1)Activo\n 2)Baja\n";
 	public final static String INSERTADO="Se ha dado de Alta el empleado";
 	public final static String NO_INSERTADO="No se pudo dar de alta, vuelva a intentarlo";
 	
