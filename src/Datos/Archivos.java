@@ -1240,13 +1240,16 @@ public float operacionesPercepciones(int idEmpleado) {
 		float total=0;
 		float auxiliar;
 		
-		for(int i=0;i<deduccionesPorEmpleado.length;i++) {
-			String[] deduccion=deduccionesPorEmpleado[i].split("\\|");
-			String[] empleado=empleadoCompleto[0].split("\\|");
-			auxiliar=(Float.parseFloat(deduccion[4])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
-			total+=auxiliar;
+		if(deduccionesPorEmpleado!=null) {
+			
+			for(int i=0;i<deduccionesPorEmpleado.length;i++) {
+				String[] deduccion=deduccionesPorEmpleado[i].split("\\|");
+				String[] empleado=empleadoCompleto[0].split("\\|");
+				auxiliar=(Float.parseFloat(deduccion[4])*(contadorAsistencias*Float.parseFloat(empleado[3])))/100;
+				total+=auxiliar;
+			}
+			
 		}
-		
 		
 		return total;
 	}
