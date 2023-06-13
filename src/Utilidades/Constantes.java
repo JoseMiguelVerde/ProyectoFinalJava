@@ -37,10 +37,13 @@ public class Constantes {
 	
 	
 	public final static String MODIFICAR_EMPLEADO="\tModifica Empleado\n1)Nombre\n2)Puesto\n3)Rfc\n4)Curp\n 5)Direccion\n6)Codigo Postal\n7)Genero\n8)Fecha de nacimiento\n";
+	public final static String EDITADO="Se ha editado el empleado";
+	public final static String NO_EDITADO="No se pudo editar, vuelva a intentarlo";
 	//Deducciones
 	
 	public static final String DEDUCCIONES="Tipos de deduccion(elige la opcion que le quieras agregar al empleado):\n 1)Masculino\n 2)Femenino\n3)Femenino\n";
-	
+	//Nomina
+	public final static String ERROR_AL_CREAR_NOMINA="No se pudo crear el recibo de nomina.";
 	//equivocaciones
 	public final static  String NOMBRE_EQUIVOCADO="Nombre Invalido, vuelva a intentarlo\n";
 	public final static  String RFC_EQUIVOCADA="RFC Invalido, vuelva a intentarlo\n";
@@ -54,7 +57,7 @@ public class Constantes {
 
 	
 	//cabeceras
-	public static final String CABECERA_EMPLEADO="Id empleado\t|\tNombre Completo\t|\tPuesto\t|\tSueldo Por dia\t|\tRFC\t|\tCURP\t|\tDirección\t|\tGénero\t|\tEstatus\t|\tFecha de nacimiento\t|\tFecha de contratación\n";
+	public static final String CABECERA_EMPLEADO="Id empleado\t|\tNombre Completo\t|\tPuesto\t|\tSueldo Por dia\t|\tRFC\t|\tCURP\t|\tDirección\t|\tCodigoPostal\t|\tGénero\t|\tEstatus\t|\tFecha de nacimiento\t|\tFecha de contratación\n";
 	public static final String CABECERA_DEDUCCIONES="Id deducción\t|\tId empleado\t|\tPeriodo\t|\tTipo de deducción\t|\tPorcentaje\n";
 	public static final String CABECERA_PERCEPCIONES="Id percepcion\t|\tId empleado\t|\tPeriodo\t|\tTipo de percepcion\t|\tPorcentaje\n";
 	public static final String CABECERA_NOMINA="Id Empleado\t|\tFecha de nomina\t|\tFaltas\t|\tTotal percepción\t|\tTotal deduccion\t|\tTotal\n";

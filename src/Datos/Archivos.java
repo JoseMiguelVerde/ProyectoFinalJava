@@ -372,7 +372,7 @@ public class Archivos {
 						String LineaModificada = String.join("|", auxiliar);
 						memoriaEscritura.write(LineaModificada);
 						memoriaEscritura.newLine();
-
+						respuesta=true;
 					}else {
 						
 						memoriaEscritura.write(linea);
@@ -425,6 +425,7 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
+						respuesta=true;
 
 					}
 					
@@ -713,7 +714,7 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
-
+						respuesta=true;
 					}
 					
 				}
@@ -760,6 +761,7 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
+						respuesta=true;
 
 					}
 					
@@ -810,6 +812,7 @@ public class Archivos {
 						String LineaModificada = String.join("|", auxiliar);
 						memoriaEscritura.write(LineaModificada);
 						memoriaEscritura.newLine();
+						respuesta=true;
 
 					}else {
 						
@@ -963,6 +966,8 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
+						
+						respuesta=true;
 
 					}
 					
@@ -1010,6 +1015,7 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
+						respuesta=true;
 
 					}
 					
@@ -1059,6 +1065,7 @@ public class Archivos {
 						String LineaModificada = String.join("|", auxiliar);
 						memoriaEscritura.write(LineaModificada);
 						memoriaEscritura.newLine();
+						respuesta=true;
 
 					}else {
 						

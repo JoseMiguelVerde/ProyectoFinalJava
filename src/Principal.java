@@ -176,6 +176,7 @@ public class Principal {
 																		ciclo=true;
 																	}
 																}while(ciclo);
+																break;
 															}
 														
 														}else {
@@ -193,6 +194,277 @@ public class Principal {
 											}
 											break;
 										case 3:
+											if(validar.contenidoDeArchivoEmpleados()){
+												do {
+													System.out.println(Constantes.MODIFICAR_EMPLEADO);
+													opcion=leer.nextLine();
+													if(validar.validarEntero(opcion)) {
+														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=8) {
+															switch(Integer.parseInt(opcion))
+															{
+															case 1:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.NOMBRE_COMPLETO);
+																			nombreCompletoEmpleado=leer.nextLine();
+																			if(validar.nombre(nombreCompletoEmpleado)) {
+																				if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 1, nombreCompletoEmpleado)) {
+																					System.out.println(Constantes.EDITADO);
+																					ciclo=false;
+																				}else {
+																					System.out.println(Constantes.NO_EDITADO);
+																					ciclo=false;
+																				}
+																			}else {
+																				System.out.println(Constantes.NOMBRE_EQUIVOCADO);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																break;
+															case 2:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.PUESTO);
+																			puesto=leer.nextLine();												
+																			if(validar.puestoYGenero(puesto)) {
+																				if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 2, (Integer.parseInt(puesto)==1?Puesto.EMPLEADO:Puesto.GERENTE).getPuesto())) {
+																					System.out.println(Constantes.EDITADO);
+																					ciclo=false;
+																				}else {
+																					System.out.println(Constantes.NO_EDITADO);
+																					ciclo=false;
+																				}
+																				
+																				
+																			}else {
+																				System.out.println(Constantes.OPCION_INVALIDA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																}while(ciclo);	
+																break;
+															case 3:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.RFC);
+																			rfc=leer.nextLine();
+																			if(validar.validarRfc(rfc)) {
+																				if(!validar.validaRfcUnico(rfc)) {
+																					if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 4, rfc)) {
+																						System.out.println(Constantes.EDITADO);
+																						ciclo=false;
+																					}else {
+																						System.out.println(Constantes.NO_EDITADO);
+																						ciclo=false;
+																					}	
+																							
+																						
+																				}else {
+																					System.out.println(Constantes.RFC_EXISTENTE);
+																					ciclo=true;
+																				}
+																			}else {
+																				System.out.println(Constantes.RFC_EQUIVOCADA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																
+																break;
+															case 4:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.CURP);
+																			curp=leer.nextLine();
+																			if(validar.validarCurp(curp)) {
+																				if(!validar.validaCurpUnico(curp)) {
+																					if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 5, curp)) {
+																						System.out.println(Constantes.EDITADO);
+																						ciclo=false;
+																					}else {
+																						System.out.println(Constantes.NO_EDITADO);
+																						ciclo=false;
+																					}	
+																				}else {
+																					System.out.println(Constantes.CURP_EXISTENTE);
+																					ciclo=true;
+																				}
+																			}else {
+																				System.out.println(Constantes.CURP_EQUIVOCADA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																break;
+															case 5:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.DIRECCION);
+																			direccion=leer.nextLine();
+																			if(validar.direccion(direccion)) {
+																				if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 6, direccion)) {
+																					System.out.println(Constantes.EDITADO);
+																					ciclo=false;
+																				}else {
+																					System.out.println(Constantes.NO_EDITADO);
+																					ciclo=false;
+																				}	
+																					
+																				
+																			}else {
+																				System.out.println(Constantes.DIRECCION_EQUIVOCADA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																break;
+															case 6:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.CODIGO_POSTAL);
+																			codigoPostal=leer.nextLine();
+																			if(validar.codigoPostal(codigoPostal)) {
+																				if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 7, codigoPostal)) {
+																					System.out.println(Constantes.EDITADO);
+																					ciclo=false;
+																				}else {
+																					System.out.println(Constantes.NO_EDITADO);
+																					ciclo=false;
+																				}	
+																			}else {
+																				System.out.println(Constantes.CODIGO_POSTAL_EQUIVOCADA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																break;
+															case 7:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.GENERO);
+																			genero=leer.nextLine();
+																			if(validar.puestoYGenero(genero)) {
+																				if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 8,  (Integer.parseInt(genero)==1?Generos.MASCULINO:Generos.FEMENINO).getNombreGenero())) {
+																					System.out.println(Constantes.EDITADO);
+																					ciclo=false;
+																				}else {
+																					System.out.println(Constantes.NO_EDITADO);
+																					ciclo=false;
+																				}
+																				
+																			}else {
+																				System.out.println(Constantes.OPCION_INVALIDA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																break;
+															case 8:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		do {
+																			System.out.println(Constantes.FECHA_DE_NACIMIENTO);
+																			fechaDeNacimiento=leer.nextLine();
+																			if(validar.validarFecha(fechaDeNacimiento)) {
+																				if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 10, fechaDeNacimiento )) {
+																					System.out.println(Constantes.EDITADO);
+																					ciclo=false;
+																				}else {
+																					System.out.println(Constantes.NO_EDITADO);
+																					ciclo=false;
+																				}
+																			}else {
+																				System.out.println(Constantes.FECHA_DE_NACIMIENTO_EQUIVOCADA);
+																				ciclo=true;
+																			}
+																		}while(ciclo);
+																		
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																	
+																}while(ciclo);
+																break;
+															}
+														
+														}else {
+															System.out.println(Constantes.OPCION_INVALIDA);
+															ciclo=true;
+														}
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}					
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											
 											break;
 										case 4:
@@ -269,9 +541,29 @@ public class Principal {
 							}while(ciclo);
 							break;
 						case 4:
-							
-							break;
+							if(validar.contenidoDeArchivoEmpleados()) {
+								do {
+									System.out.println(Constantes.DAME_ID_EMPLEADO);
+									idEmpleado=leer.nextLine();
+									if(validar.validarEntero(idEmpleado)) {
+										if(manipulacionArchivos.mostrarNominaPorEmpleado(Integer.parseInt(idEmpleado))) {
+											manipulacionArchivos.mostrarNominaPorEmpleadoEnConsola(Integer.parseInt(idEmpleado));
+											ciclo=false;
+										}else {
+											System.out.println(Constantes.ERROR_AL_CREAR_NOMINA);
+											ciclo=false;
+										}
+									}else {
+										System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+										ciclo=true;
+									}
 									
+								}while(ciclo);
+							}else {
+								System.out.println(Constantes.NO_HAY_DATOS);
+								ciclo=false;
+							}
+							break;
 					}
 					System.out.println(Constantes.VOLVER_AL_MENU);
 					opcion = leer.nextLine();			
