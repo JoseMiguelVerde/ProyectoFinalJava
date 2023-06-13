@@ -1,11 +1,15 @@
 package Utilidades;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import Entidades.Empleado;
 
@@ -21,25 +25,100 @@ public class Validaciones {
 		}
 		return respuesta;
 	}
-	public boolean nombreYDireccion(String valor) {
+	public boolean nombre(String nombre) {
+		boolean respuesta=true;
+		char letra;
+		for(int i=0;i<nombre.length();i++) {
+			
+			letra = nombre.charAt(i);
+            if (!Character.isLetter(letra) && letra != 'ñ' && letra != 'Ñ' && letra != ' ') {
+                respuesta = false; 
+            }
+			
+		}
+		
+		return respuesta;
+	}
+	public boolean direccion(String valor) {
 		boolean respuesta=false;
 		if(valor.length()>0) {
 			respuesta=true;
 		}
 		return respuesta;
 	}
-	public boolean fechaDeNacimiento(String valor) {
+
+	public boolean validaCurpUnico(String curp) {
 		boolean respuesta=false;
-		if(valor.length()>0) {
-			respuesta=true;
+		
+		try {
+			
+			FileReader archivo = new FileReader("lista_empleados.txt");
+			BufferedReader memoria = new BufferedReader(archivo);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					if(linea.contains(curp))
+					{
+						
+						respuesta=true;
+						break;
+						
+					}
+					
+				}
+				
+			}
+			archivo.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
 		}
+		
 		return respuesta;
 	}
-//	public static LocalDate transformarFecha(String fecha) {
-//     
-//        LocalDate localDate = LocalDate.parse(fecha, Constantes.FORMATO_FECHA_NACIMIENTO);
-//        return fechaTransformada
-//	}
+	public boolean validaRfcUnico(String rfc) {
+		boolean respuesta=false;
+		
+		try {
+			
+			FileReader archivo = new FileReader("lista_empleados.txt");
+			BufferedReader memoria = new BufferedReader(archivo);
+			
+			String linea="";
+			while(linea!=null) {
+				
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+					
+					if(linea.contains(rfc))
+					{
+						
+						respuesta=true;
+						break;
+						
+					}
+					
+				}
+				
+			}
+			archivo.close();
+			
+		}catch(IOException ex) {
+			
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
 	public boolean puestoYGenero(String valor) {
 		boolean respuesta=false;
 		try {
@@ -62,12 +141,25 @@ public class Validaciones {
 		return respuesta;
 	}
 
-	public boolean validarCurp(String curp) {
+	 public boolean validarCurp(String curp) {
+		 boolean respuesta=false;
+	        String formato ="[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}" +
+	                        "(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])" +
+	                        "[HM]{1}" +
+	                        "(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)" +
+	                        "[B-DF-HJ-NP-TV-Z]{3}" +
+	                        "[0-9A-Z]{1}[0-9]{1}$";
 
-		String formato="[A-Z]{4}\\d{6}[HM]{1}(AS|BC|BS|CC|CH|CL|CM|CS|DF|DG|GR|GT|HG|JC|MC|MN|MS|NE|NL|NT|OC|PL|QR|QT|SL|SP|SR|TC|TL|TS|VZ|YN|ZS){1}[A-Z]{3}[\\dA-ZÑ]{2}\\d{1}";
+	        Pattern patron = Pattern.compile(formato);
+	        if (!patron.matcher(curp).matches()) {
+	        	respuesta= false;
+	        } else {
+	        	respuesta= true;
 
-		return curp.matches(formato);
-	}
+	        }
+	        return respuesta;
+	        
+	 }
 
 	public boolean validarRfc(String rfc) {
 
@@ -115,7 +207,7 @@ public class Validaciones {
 	    return respuesta;
 	}
 	
-	public static boolean validarFecha(String fechaString) {
+	public boolean validarFecha(String fechaString) {
         boolean respuesta=false;
 		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         dateFormat.setLenient(false);
@@ -136,6 +228,73 @@ public class Validaciones {
 
         return respuesta; 
     }
+	public boolean contenidoDeArchivoEmpleados() {
+		boolean respuesta=false;
 
+		try {
+
+			FileReader archivo = new FileReader("lista_empleados.txt");
+			BufferedReader memoria = new BufferedReader(archivo);
+
+			String linea;
+			while((linea=memoria.readLine())!=null) {
+				respuesta=true;
+			}
+			archivo.close();
+
+		}catch(IOException ex) {
+
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	public boolean contenidoDeArchivoPercepciones() {
+		boolean respuesta=false;
+
+		try {
+
+			FileReader archivo = new FileReader("lista_percepciones.txt");
+			BufferedReader memoria = new BufferedReader(archivo);
+
+			String linea;
+			while((linea=memoria.readLine())!=null) {
+				respuesta=true;
+			}
+			
+			archivo.close();
+
+		}catch(IOException ex) {
+
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
+	
+	public boolean contenidoDeArchivoDeducciones() {
+		boolean respuesta=false;
+
+		try {
+
+			FileReader archivo = new FileReader("lista_deducciones.txt");
+			BufferedReader memoria = new BufferedReader(archivo);
+
+			String linea;
+			while((linea=memoria.readLine())!=null) {
+				respuesta=true;
+			}
+			archivo.close();
+
+		}catch(IOException ex) {
+
+			throw new RuntimeException("Error al intentar leer el archivo.");
+			
+		}
+		
+		return respuesta;
+	}
 
 }

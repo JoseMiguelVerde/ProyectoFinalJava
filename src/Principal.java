@@ -41,74 +41,85 @@ public class Principal {
 										{
 										case 1:
 											do {
+												System.out.println(Constantes.ALTA_EMPLEADO);
 												System.out.println(Constantes.NOMBRE_COMPLETO);
 												nombreCompletoEmpleado=leer.nextLine();
-												if(validar.nombreYDireccion(nombreCompletoEmpleado)) {
+												if(validar.nombre(nombreCompletoEmpleado)) {
 													do {
 														System.out.println(Constantes.CURP);
 														curp=leer.nextLine();
 														if(validar.validarCurp(curp)) {
-															do {
-																System.out.println(Constantes.RFC);
-																rfc=leer.nextLine();
-																if(validar.validarRfc(rfc)) {
-																	do {
-																		System.out.println(Constantes.FECHA_DE_NACIMIENTO);
-																		fechaDeNacimiento=leer.nextLine();
-																		if(validar.fechaDeNacimiento(fechaDeNacimiento)) {
+															if(!validar.validaCurpUnico(curp)) {
+																do {
+																	System.out.println(Constantes.RFC);
+																	rfc=leer.nextLine();
+																	if(validar.validarRfc(rfc)) {
+																		if(!validar.validaRfcUnico(rfc)) {
 																			do {
-																				System.out.println(Constantes.DIRECCION);
-																				direccion =leer.nextLine();
-																				if(validar.nombreYDireccion(direccion)) {
+																				System.out.println(Constantes.FECHA_DE_NACIMIENTO);
+																				fechaDeNacimiento=leer.nextLine();
+																				if(validar.validarFecha(fechaDeNacimiento)) {
 																					do {
-																						System.out.println(Constantes.CODIGO_POSTAL);
-																						codigoPostal =leer.nextLine();
-																						if(validar.codigoPostal(codigoPostal)) {
+																						System.out.println(Constantes.DIRECCION);
+																						direccion =leer.nextLine();
+																						if(validar.direccion(direccion)) {
 																							do {
-																								System.out.println(Constantes.PUESTO);
-																								puesto =leer.nextLine();
-																								if(validar.puestoYGenero(puesto)) {
+																								System.out.println(Constantes.CODIGO_POSTAL);
+																								codigoPostal =leer.nextLine();
+																								if(validar.codigoPostal(codigoPostal)) {
 																									do {
-																										System.out.println(Constantes.GENERO);
-																										genero =leer.nextLine();
-																										if(validar.puestoYGenero(genero)) {
-																											if(manipulacion.guardaEmpleado(new Empleado(nombreCompletoEmpleado,(Integer.parseInt(puesto)==1?Puesto.EMPLEADO:Puesto.GERENTE),rfc,  curp,  direccion, (Integer.parseInt(genero)==1?Generos.MASCULINO:Generos.FEMENINO), LocalDate.parse(fechaDeNacimiento, Constantes.FORMATO_FECHA_NACIMIENTO),  Integer.parseInt(codigoPostal))) && manipulacionArchivos.guardaEmpleado(new Empleado(nombreCompletoEmpleado,(Integer.parseInt(puesto)==1?Puesto.EMPLEADO:Puesto.GERENTE),rfc,  curp,  direccion, (Integer.parseInt(genero)==1?Generos.MASCULINO:Generos.FEMENINO), LocalDate.parse(fechaDeNacimiento, Constantes.FORMATO_FECHA_NACIMIENTO),  Integer.parseInt(codigoPostal)))) {
-																												System.out.println(Constantes.INSERTADO);	
-																												ciclo=false;
-																											}else {
-																												System.out.println(Constantes.NO_INSERTADO);
-																												ciclo=false;
-																											}
+																										System.out.println(Constantes.PUESTO);
+																										puesto =leer.nextLine();
+																										if(validar.puestoYGenero(puesto)) {
+																											do {
+																												System.out.println(Constantes.GENERO);
+																												genero =leer.nextLine();
+																												if(validar.puestoYGenero(genero)) {
+																													if(manipulacionArchivos.guardaEmpleado(new Empleado(nombreCompletoEmpleado,(Integer.parseInt(puesto)==1?Puesto.EMPLEADO:Puesto.GERENTE),rfc,  curp,  direccion, (Integer.parseInt(genero)==1?Generos.MASCULINO:Generos.FEMENINO), LocalDate.parse(fechaDeNacimiento, Constantes.FORMATO_FECHA_NACIMIENTO),  Integer.parseInt(codigoPostal)))) {
+																														System.out.println(Constantes.INSERTADO);	
+																														ciclo=false;
+																													}else {
+																														System.out.println(Constantes.NO_INSERTADO);
+																														ciclo=false;
+																													}
+																												}else {
+																													System.out.println(Constantes.OPCION_INVALIDA);
+																													ciclo=true;
+																												}
+																											}while(ciclo);
 																										}else {
 																											System.out.println(Constantes.OPCION_INVALIDA);
 																											ciclo=true;
 																										}
 																									}while(ciclo);
 																								}else {
-																									System.out.println(Constantes.OPCION_INVALIDA);
+																									System.out.println(Constantes.CODIGO_POSTAL_EQUIVOCADA);
 																									ciclo=true;
 																								}
 																							}while(ciclo);
 																						}else {
-																							System.out.println(Constantes.CODIGO_POSTAL_EQUIVOCADA);
+																							System.out.println(Constantes.DIRECCION_EQUIVOCADA);
 																							ciclo=true;
 																						}
 																					}while(ciclo);
 																				}else {
-																					System.out.println(Constantes.DIRECCION_EQUIVOCADA);
+																					System.out.println(Constantes.FECHA_DE_NACIMIENTO_EQUIVOCADA);
 																					ciclo=true;
 																				}
 																			}while(ciclo);
 																		}else {
-																			System.out.println(Constantes.FECHA_DE_NACIMIENTO);
+																			System.out.println(Constantes.RFC_EXISTENTE);
 																			ciclo=true;
 																		}
-																	}while(ciclo);
-																}else {
-																	System.out.println(Constantes.RFC_EQUIVOCADA);
-																	ciclo=true;
-																}
-															}while(ciclo);
+																	}else {
+																		System.out.println(Constantes.RFC_EQUIVOCADA);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+															}else {
+																System.out.println(Constantes.CURP_EXISTENTE);
+																ciclo=true;
+															}
 														}else {
 															System.out.println(Constantes.CURP_EQUIVOCADA);
 															ciclo=true;
@@ -121,10 +132,22 @@ public class Principal {
 											}while(ciclo);
 											break;
 										case 2:
+											do {
+												System.out.println(Constantes.BAJA_EMPLEADO);
+												
+											}while(ciclo);
 											break;
 										case 3:
+											do {
+												System.out.println(Constantes.ALTA_EMPLEADO);
+												
+											}while(ciclo);
 											break;
 										case 4:
+											do {
+												System.out.println(Constantes.ALTA_EMPLEADO);
+												
+											}while(ciclo);
 											break;
 										}
 									}else {

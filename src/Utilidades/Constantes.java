@@ -9,7 +9,6 @@ public class Constantes {
 	public static final String MENU_EMPLEADOS="Selecciona una opcion:\n1)Dar de alta\n2)Dar de Baja \n3)Modificar\n4)Consultar\n";
 	public static final String MENU_DEDUCCIONES="Selecciona una opcion:\n1)Agregar\n2)Eliminar \n3)Modificar\n4)Consultar\n";
 	public static final String MENU_PERCEPCIONES="Selecciona una opcion:\n1)Agregar\n2)Eliminar \n3)Modificar\n4)Consultar\n";
-	public final static String ALTA_EMPLEADO="\tAlta Empleado\nFavor de ingresar los siguientes datos:\n";
 	public static final String VOLVER_AL_MENU="\n¿Quiere volver al menu? \n1) Si \nsi quiere salir del programa presione cualquier tecla";
 	public final static String INGRESAR_VALOR_NUMERICO="Debe ingresar un valor numerico.";
 	public final static String OPCION_INVALIDA="Opcion invalida, escoga un numero de la opcion del menu";
@@ -17,6 +16,7 @@ public class Constantes {
 	public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 	public static final DateTimeFormatter FORMATO_FECHA_NACIMIENTO = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	//Empleado
+	public final static String ALTA_EMPLEADO="\tAlta Empleado\nFavor de ingresar los siguientes datos:\n";
 	public static final String NOMBRE_COMPLETO="Nombre Completo:\n";
 	public static final String CURP="CURP:\n";
 	public static final String RFC="RFC:\n";
@@ -28,14 +28,18 @@ public class Constantes {
 	public final static String INSERTADO="Se ha dado de Alta el empleado";
 	public final static String NO_INSERTADO="No se pudo dar de alta, vuelva a intentarlo";
 	
+	public final static String BAJA_EMPLEADO="\tBaja Empleado\n1)Logica\n2)Fisica\n";
 	
 	//equivocaciones
 	public final static  String NOMBRE_EQUIVOCADO="Nombre Invalido, vuelva a intentarlo\n";
 	public final static  String RFC_EQUIVOCADA="RFC Invalido, vuelva a intentarlo\n";
+	public final static  String RFC_EXISTENTE="RFC Existente, vuelva a intentarlo\n";
 	public final static  String CURP_EQUIVOCADA="Curp Invalido, vuelva a intentarlo\n";
+	public final static  String CURP_EXISTENTE="Curp Existente, vuelva a intentarlo\n";
+	public static final String FECHA_DE_NACIMIENTO_EQUIVOCADA="Fecha de Nacimiento invalida\n";
 	public final static  String DIRECCION_EQUIVOCADA="Direccion Invalida, vuelva a intentarlo\n";
-	public final static  String CODIGO_POSTAL_EQUIVOCADA="Direccion Invalida, vuelva a intentarlo\n";
-	public final static  String UNIDADES_EQUIVOCADA=" Unidades Invalido, vuelva a intentarlo\n";
+	public final static  String CODIGO_POSTAL_EQUIVOCADA="Codigo Postal Invalida, vuelva a intentarlo\n";
+
 
 	
 	//cabeceras
