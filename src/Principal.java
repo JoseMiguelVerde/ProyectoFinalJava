@@ -468,10 +468,85 @@ public class Principal {
 											
 											break;
 										case 4:
-											do {
-												System.out.println(Constantes.ALTA_EMPLEADO);
-												
-											}while(ciclo);
+											if(validar.contenidoDeArchivoEmpleados()){
+												do {
+													System.out.println(Constantes.CONSULTAR_EMPLEADO);
+													opcion=leer.nextLine();
+													if(validar.validarEntero(opcion)) {
+														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=6) {
+															switch(Integer.parseInt(opcion))
+															{
+															case 1:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarEnListaEmpleados(BuscarPor.ID, idEmpleado), 1));
+																		ciclo=false;
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																
+																break;
+															case 2:
+																do {
+																	System.out.println(Constantes.NOMBRE_COMPLETO);
+																	nombreCompletoEmpleado=leer.nextLine();
+																	if(validar.nombre(nombreCompletoEmpleado)) {
+																		System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarEnListaEmpleados(BuscarPor.NOMBRE, nombreCompletoEmpleado), 1));
+																		ciclo=false;
+																	}else {
+																		System.out.println(Constantes.NOMBRE_EQUIVOCADO);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																break;
+															case 3:
+																do {
+																	System.out.println(Constantes.PUESTO);
+																	puesto=leer.nextLine();												
+																	if(validar.puestoYGenero(puesto)) {
+																		System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarEnListaEmpleados(BuscarPor.PUESTO, (Integer.parseInt(puesto)==1?Puesto.EMPLEADO:Puesto.GERENTE).getPuesto()), 1));
+																		ciclo=false;
+																	}else {
+																		System.out.println(Constantes.OPCION_INVALIDA);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																break;
+															case 4:
+																do {
+																	System.out.println(Constantes.GENERO);
+																	genero=leer.nextLine();
+																	if(validar.puestoYGenero(genero)) {
+																		System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarEnListaEmpleados(BuscarPor.GENERO, (Integer.parseInt(genero)==1?Generos.MASCULINO:Generos.FEMENINO).getNombreGenero()), 1));
+																		ciclo=false;
+																	}else {
+																		System.out.println(Constantes.OPCION_INVALIDA);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																break;
+															case 5:
+																System.out.println(manipulacionArchivos.mostrarTodosEmpledos());
+																break;
+															}
+														}else {
+															System.out.println(Constantes.OPCION_INVALIDA);
+															ciclo=true;
+														}
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
+											
 											break;
 										}
 									}else {

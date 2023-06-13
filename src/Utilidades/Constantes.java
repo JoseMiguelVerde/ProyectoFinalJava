@@ -39,6 +39,9 @@ public class Constantes {
 	public final static String MODIFICAR_EMPLEADO="\tModifica Empleado\n1)Nombre\n2)Puesto\n3)Rfc\n4)Curp\n 5)Direccion\n6)Codigo Postal\n7)Genero\n8)Fecha de nacimiento\n";
 	public final static String EDITADO="Se ha editado el empleado";
 	public final static String NO_EDITADO="No se pudo editar, vuelva a intentarlo";
+	
+	public final static String CONSULTAR_EMPLEADO="\tConsultar Empleado\n1)Id\n2)Nombre\n3)Puesto\n4)Genero\n 5)Estatus\n 6)Todos los Empleados\n";
+	
 	//Deducciones
 	
 	public static final String DEDUCCIONES="Tipos de deduccion(elige la opcion que le quieras agregar al empleado):\n 1)Masculino\n 2)Femenino\n3)Femenino\n";

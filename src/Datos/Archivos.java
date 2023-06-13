@@ -425,9 +425,8 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
-						respuesta=true;
-
 					}
+					respuesta=true;
 					
 				}
 				memoriaLectura.close();
@@ -714,9 +713,9 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
-						respuesta=true;
+						
 					}
-					
+					respuesta=true;
 				}
 				memoriaLectura.close();
 				memoriaEscritura.close();
@@ -761,9 +760,9 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
-						respuesta=true;
 
 					}
+					respuesta=true;
 					
 				}
 				memoriaLectura.close();
@@ -966,11 +965,9 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
-						
-						respuesta=true;
 
 					}
-					
+					respuesta=true;
 				}
 				memoriaLectura.close();
 				memoriaEscritura.close();
@@ -1015,10 +1012,9 @@ public class Archivos {
 
 						memoriaEscritura.write(linea);
 						memoriaEscritura.newLine();
-						respuesta=true;
 
 					}
-					
+					respuesta=true;
 				}
 				memoriaLectura.close();
 				memoriaEscritura.close();
