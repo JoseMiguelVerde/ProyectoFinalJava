@@ -18,6 +18,7 @@ public class Constantes {
 	//Empleado
 	public final static String ALTA_EMPLEADO="\tAlta Empleado\nFavor de ingresar los siguientes datos:\n";
 	public static final String NOMBRE_COMPLETO="Nombre Completo:\n";
+	public final static String DAME_ID_EMPLEADO="Dame el id del Empleado:\n";
 	public static final String CURP="CURP:\n";
 	public static final String RFC="RFC:\n";
 	public static final String DIRECCION="Direccion sin codigo Postal:\n";
@@ -29,6 +30,16 @@ public class Constantes {
 	public final static String NO_INSERTADO="No se pudo dar de alta, vuelva a intentarlo";
 	
 	public final static String BAJA_EMPLEADO="\tBaja Empleado\n1)Logica\n2)Fisica\n";
+	public final static String ELIMINADO="Se ha dado de Baja el empleado";
+	public final static String NO_ELIMINADO="No se pudo dar de Baja, vuelva a intentarlo";
+	public final static String NO_HAY_DATOS="No hay datos en el archivo\n";
+	
+	
+	
+	public final static String MODIFICAR_EMPLEADO="\tModifica Empleado\n1)Nombre\n2)Puesto\n3)Rfc\n4)Curp\n 5)Direccion\n6)Codigo Postal\n7)Genero\n8)Fecha de nacimiento\n";
+	//Deducciones
+	
+	public static final String DEDUCCIONES="Tipos de deduccion(elige la opcion que le quieras agregar al empleado):\n 1)Masculino\n 2)Femenino\n3)Femenino\n";
 	
 	//equivocaciones
 	public final static  String NOMBRE_EQUIVOCADO="Nombre Invalido, vuelva a intentarlo\n";

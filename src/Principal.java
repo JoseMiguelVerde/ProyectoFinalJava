@@ -18,7 +18,7 @@ public class Principal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner leer=new Scanner(System.in);
-		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero;
+		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero,idEmpleado;
 		boolean ciclo=false;
 		Validaciones validar=new Validaciones();
 		Archivos manipulacionArchivos= new Archivos();
@@ -132,16 +132,68 @@ public class Principal {
 											}while(ciclo);
 											break;
 										case 2:
-											do {
-												System.out.println(Constantes.BAJA_EMPLEADO);
-												
-											}while(ciclo);
+											if(validar.contenidoDeArchivoEmpleados()){
+												do {
+													System.out.println(Constantes.BAJA_EMPLEADO);
+													opcion=leer.nextLine();
+													if(validar.validarEntero(opcion)) {
+														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=2) {
+															switch(Integer.parseInt(opcion))
+															{
+															case 1:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		if(manipulacionArchivos.modificarPorIdEmpleado(Integer.parseInt(idEmpleado), 8, Estatus.BAJA.getEstatus())) {
+																			System.out.println(Constantes.ELIMINADO);
+																			ciclo=false;
+																		}else {
+																			System.out.println(Constantes.NO_ELIMINADO);
+																			ciclo=false;
+																		}
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+																
+																break;
+															case 2:
+																do {
+																	System.out.println(Constantes.DAME_ID_EMPLEADO);
+																	idEmpleado=leer.nextLine();
+																	if(validar.validarEntero(idEmpleado)) {
+																		if(manipulacionArchivos.bajaEmpleadoPorIdFisica(Integer.parseInt(idEmpleado))) {
+																			System.out.println(Constantes.ELIMINADO);
+																			ciclo=false;
+																		}else {
+																			System.out.println(Constantes.NO_ELIMINADO);
+																			ciclo=false;
+																		}
+																	}else {
+																		System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+																		ciclo=true;
+																	}
+																}while(ciclo);
+															}
+														
+														}else {
+															System.out.println(Constantes.OPCION_INVALIDA);
+															ciclo=true;
+														}
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}					
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											break;
 										case 3:
-											do {
-												System.out.println(Constantes.ALTA_EMPLEADO);
-												
-											}while(ciclo);
+											
 											break;
 										case 4:
 											do {
