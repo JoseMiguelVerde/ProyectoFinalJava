@@ -167,7 +167,7 @@ public class Principal {
 																	System.out.println(Constantes.DAME_ID_EMPLEADO);
 																	idEmpleado=leer.nextLine();
 																	if(validar.validarEntero(idEmpleado)) {
-																		if(manipulacionArchivos.bajaEmpleadoPorIdFisica(Integer.parseInt(idEmpleado))) {
+																		if(manipulacionArchivos.bajaEmpleadoPorIdFisica(Integer.parseInt(idEmpleado))&& manipulacionArchivos.eliminarDeduccionesDeEmpleado(Integer.parseInt(idEmpleado))&& manipulacionArchivos.eliminarPercepcionesDeEmpleado(Integer.parseInt(idEmpleado))) {
 																			System.out.println(Constantes.ELIMINADO);
 																			ciclo=false;
 																		}else {
