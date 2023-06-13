@@ -1,7 +1,11 @@
 package Utilidades;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 import Entidades.Empleado;
 
@@ -46,13 +50,6 @@ public class Validaciones {
 		}
 		return respuesta;
 	}
-	public boolean codigoPostal(String valor) {
-		boolean respuesta=false;
-		if(valor.length()>0) {
-			respuesta=true;
-		}
-		return respuesta;
-	}
 	
 	public boolean validarFlotante(String valor) {
 		boolean respuesta;
@@ -94,6 +91,51 @@ public class Validaciones {
 		
 		return respuesta;
 	}
+	
+	public boolean codigoPostal(String valor) {
+	    boolean respuesta = false;
+	    
+	    try {
+	    if (valor.length() == 5) 
+	    { 
+	    	
+	        int codigo = Integer.parseInt(valor);
+	        if (codigo >= 1000 && codigo <= 16900) 
+	        { 
+	        	
+	        	respuesta = true;
+	        	
+	        }
+	        
+	    }
+	    }catch(Exception ex) {
+	    	respuesta=false;
+	    }
+	    
+	    return respuesta;
+	}
+	
+	public static boolean validarFecha(String fechaString) {
+        boolean respuesta=false;
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        dateFormat.setLenient(false);
+
+        try {
+            
+            Date fecha = dateFormat.parse(fechaString);
+            Calendar fechaActual = Calendar.getInstance();
+            fechaActual.add(Calendar.YEAR, -15);
+
+            if (fecha.before(fechaActual.getTime())) 
+            {
+                respuesta = true; 
+            }
+        } catch (Exception ex) {
+            respuesta=false;
+        }
+
+        return respuesta; 
+    }
 
 
 }

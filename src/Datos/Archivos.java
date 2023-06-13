@@ -1236,26 +1236,27 @@ public float operacionesPercepciones(int idEmpleado) {
 		
 		return total;
 	}
-	
-	public float total(int idEmpleado) {
-		
+
+	public float totalSalario(int idEmpleado) {
+
 		String[] empleadoCompleto=buscarEnListaEmpleados(BuscarPor.ID,idEmpleado);
 		int contadorAsistencias=numeroDeAsistencias(idEmpleado);
-		float total=0;
-		
-			String[] empleado=empleadoCompleto[0].split("|");
-			total=(contadorAsistencias*Float.parseFloat(empleado[3]));
-		
-		
+		float total=0,  salarioMensual=0;
+
+		String[] empleado=empleadoCompleto[0].split("\\|");
+		salarioMensual=(contadorAsistencias*Float.parseFloat(empleado[3]));
+		salarioMensual=salarioMensual+operacionesPercepciones(idEmpleado);
+		total=salarioMensual-operacionesDeducciones(idEmpleado);
+
 		return total;
-		
+
 	}
 	
 	public boolean mostrarNominaPorEmpleado(int idEmpleado) {
 		boolean respuesta=false;
 		String nombreEmpleado=null;
 		String nombreInicial="nombre.txt";
-		
+
 		try {
 
 			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
@@ -1272,62 +1273,105 @@ public float operacionesPercepciones(int idEmpleado) {
 					if(Integer.parseInt(auxiliar[0])==idEmpleado)
 					{
 						nombreEmpleado=auxiliar[1];
-						
+
 					}
-					
+
 				}
-				
+
 			}
 			archivoLectura.close();
-			
+
 		}catch(IOException ex) {
-			
+
 			throw new RuntimeException("Error al intentar leer el archivo.");
-			
+
 		}
-		
+
 		//-------------------------------------
-		
-		
+
+
 		if(nombreEmpleado!=null)
 		{
 			String nombreArchivo=nombreInicial.replace("nombre", nombreEmpleado);
 			File nomina=new File(nombreArchivo);
-			
+
 			if(!nomina.exists())
 			{
-				
+
 				try {
-					
+
 					nomina.createNewFile();
-					
+
 				} catch (IOException e) {
-					
+
 					throw new RuntimeException("Error al intentar crear el archivo "+ nombreArchivo);
-					
+
 				}
-				
+
 			}
-			
+
 			try {
-				
+
 				FileWriter archivo=new FileWriter(nombreArchivo,true);
-				
-				archivo.write(String.valueOf(Constantes.CABECERA_NOMINA + String.valueOf(idEmpleado) + "|" + LocalDate.now().toString() + "|" + String.valueOf(numeroDeAsistencias(idEmpleado)>=30?0:31-numeroDeAsistencias(idEmpleado)) + "|" + String.valueOf(total(idEmpleado)+operacionesPercepciones(idEmpleado)+operacionesDeducciones(idEmpleado)) + "\n"));
-				
+
+				archivo.write(String.valueOf(Constantes.CABECERA_NOMINA + String.valueOf(idEmpleado) + "|" + LocalDate.now().toString() + "|" + String.valueOf(numeroDeAsistencias(idEmpleado)>=30?0:31-numeroDeAsistencias(idEmpleado)) + "|" + operacionesPercepciones(idEmpleado) + "|" + operacionesDeducciones(idEmpleado) + "|"+ String.valueOf(totalSalario(idEmpleado)) + "\n"));
+
 				archivo.close();
 				respuesta=true;
-				
+
 			}catch(IOException ex) {
-				
+
 				System.out.println("No se ha encontrado el archivo.");
-				
+
 			}
-			
+
 		}
 
-		
+
 		return respuesta;
 	}
-	
+
+	public String mostrarNominaPorEmpleadoEnConsola(int idEmpleado) {
+		String respuesta="";
+		String nombreEmpleado=null;
+		
+
+		try {
+
+			FileReader archivoLectura=new FileReader("lista_empleados.txt", Charset.forName("UTF8"));
+			BufferedReader memoria=new BufferedReader(archivoLectura);
+
+			String linea="";
+			while(linea!=null) {
+
+				linea=memoria.readLine();
+				if(linea!=null)
+				{
+
+					String[] auxiliar =linea.split("\\|");
+					if(Integer.parseInt(auxiliar[0])==idEmpleado)
+					{
+						nombreEmpleado=auxiliar[1];
+
+					}
+
+				}
+
+			}
+			archivoLectura.close();
+
+		}catch(IOException ex) {
+
+			throw new RuntimeException("Error al intentar leer el archivo.");
+
+		}
+
+		//-------------------------------------
+
+
+		respuesta=(Constantes.CABECERA_NOMINA + String.valueOf(idEmpleado) + "|" + LocalDate.now().toString() + "|" + String.valueOf(numeroDeAsistencias(idEmpleado)>=30?0:31-numeroDeAsistencias(idEmpleado)) + "|" + operacionesPercepciones(idEmpleado) + "|" + operacionesDeducciones(idEmpleado) + "|"+ String.valueOf(totalSalario(idEmpleado)) + "\n");
+
+
+		return respuesta;
+	}
 }
