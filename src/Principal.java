@@ -722,19 +722,11 @@ public class Principal {
 										case 4:
 											if(validar.contenidoDeArchivoDeducciones()){
 												do {
-													System.out.println(Constantes.AGREGAR_DEDUCCIONES);
-													opcion=leer.nextLine();
-													if(validar.validarEntero(opcion)) {
-														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=6) {
-															switch(Integer.parseInt(opcion))
-															{
-															
-															}
-															
-														}else {
-															System.out.println(Constantes.OPCION_INVALIDA);
-															ciclo=true;
-														}
+													System.out.println(Constantes.MOSTRAR_DEDUCCIONES);
+													idEmpleado=leer.nextLine();
+													if(validar.validarEntero(idEmpleado)&& validar.existeId(Integer.parseInt(idEmpleado))) {
+														System.out.println(manipulacionArchivos.mostrar(manipulacionArchivos.buscarDeduccion(BuscarPor.ID, idEmpleado), 2));
+														ciclo=false;
 													}else {
 														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
 														ciclo=true;
