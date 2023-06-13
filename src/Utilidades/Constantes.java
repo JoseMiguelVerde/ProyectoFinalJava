@@ -45,7 +45,15 @@ public class Constantes {
 	
 	//Deducciones
 	
-	public static final String DEDUCCIONES="Tipos de deduccion(elige la opcion que le quieras agregar al empleado):\n 1)Masculino\n 2)Femenino\n3)Femenino\n";
+	public static final String TIPOS_DEDUCCIONES="Tipos de deduccion(elige la opcion que le quieras agregar al empleado):\n 1)Formacion Profesional\n 2)Contingencia Comun\n3)Seguro Medico\n";
+	public static final String AGREGAR_DEDUCCIONES="\tAgregar Deducciones\nDame el id del Empleado a agregar la deduccion:\n";
+	public static final String AGREGADO="Se agrego la deduccion\n";
+	public static final String NO_AGREGADO="No se pudo agregar la deduccion\n";
+	public static final String ELIMINAR_DEDUCCIONES="\tEliminar\n 1)Por id de Deduccion \n 2)Todas las deducciones de un empleado\n";
+	public static final String EDITAR_DEDUCCIONES="\tEditar Tipo de deduccion\n Dame el id de la deduccion:\n";
+	public static final String MOSTRAR_DEDUCCIONES="\tMostrar deducciones Por id de Empledo\n Dame id de empleado:";
+	//Percepciones
+	
 	//Nomina
 	public final static String ERROR_AL_CREAR_NOMINA="No se pudo crear el recibo de nomina.";
 	//equivocaciones

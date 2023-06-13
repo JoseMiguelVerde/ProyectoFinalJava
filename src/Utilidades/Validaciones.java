@@ -129,6 +129,16 @@ public class Validaciones {
 		}
 		return respuesta;
 	}
+	public boolean deduccionYPercepcionOpcion(String valor) {
+		boolean respuesta=false;
+		try {
+			if(Integer.parseInt(valor)>=1 && Integer.parseInt(valor)<=3);
+			respuesta = true;
+		} catch (Exception ex) {
+			respuesta = false;
+		}
+		return respuesta;
+	}
 	
 	public boolean validarFlotante(String valor) {
 		boolean respuesta;

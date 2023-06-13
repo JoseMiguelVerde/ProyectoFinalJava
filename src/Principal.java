@@ -1,8 +1,10 @@
+import Entidades.Deducciones;
 import Entidades.Empleado;
 import Entidades.Gerente;
 import Entidades.Percepciones;
 import Utilidades.Constantes;
 import Utilidades.Constantes.BuscarPor;
+import Utilidades.Constantes.Deduccion;
 import Utilidades.Constantes.Estatus;
 import Utilidades.Constantes.Generos;
 import Utilidades.Constantes.Puesto;
@@ -18,7 +20,7 @@ public class Principal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner leer=new Scanner(System.in);
-		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero,idEmpleado, estatus;
+		String opcion, nombreCompletoEmpleado, rfc,codigoPostal, curp, direccion, fechaDeNacimiento, puesto, genero,idEmpleado, estatus, percepcion, deduccion;
 		boolean ciclo=false;
 		Validaciones validar=new Validaciones();
 		Archivos manipulacionArchivos= new Archivos();
@@ -582,8 +584,67 @@ public class Principal {
 										switch(Integer.parseInt(opcion))
 										{
 										case 1:
+											if(validar.contenidoDeArchivoEmpleados()){
+												do {
+													System.out.println(Constantes.AGREGAR_DEDUCCIONES);
+													idEmpleado=leer.nextLine();
+													if(validar.validarEntero(idEmpleado)) {
+														do{
+															System.out.println(Constantes.TIPOS_DEDUCCIONES);
+															deduccion=leer.nextLine();
+															if(validar.deduccionYPercepcionOpcion(deduccion)) {
+																if(manipulacionArchivos.agregarDeduccion(new Deducciones(Integer.parseInt(idEmpleado),(Integer.parseInt(deduccion)==1?Deduccion.FORMACION_PROFESIONAL:(Integer.parseInt(deduccion)==2?Deduccion.CONTINGENCIA_COMUN:Deduccion.SEGURO_MEDICO))))) {
+																	System.out.println(Constantes.AGREGADO);	
+																	ciclo=false;
+																}else {
+																	System.out.println(Constantes.NO_AGREGADO);
+																	ciclo=false;
+																}
+															}else {
+																System.out.println(Constantes.OPCION_INVALIDA);
+																ciclo=true;
+															}
+														}while(ciclo);
+														
+														
+
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+													
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
+											
 											break;
 										case 2:
+											if(validar.contenidoDeArchivoEmpleados()){
+												do {
+													System.out.println(Constantes.AGREGAR_DEDUCCIONES);
+													opcion=leer.nextLine();
+													if(validar.validarEntero(opcion)) {
+														if(Integer.parseInt(opcion)>=1 && Integer.parseInt(opcion)<=6) {
+															switch(Integer.parseInt(opcion))
+															{
+															
+															}
+															
+														}else {
+															System.out.println(Constantes.OPCION_INVALIDA);
+															ciclo=true;
+														}
+													}else {
+														System.out.println(Constantes.INGRESAR_VALOR_NUMERICO);
+														ciclo=true;
+													}
+												}while(ciclo);
+											}else {
+												System.out.println(Constantes.NO_HAY_DATOS);
+												ciclo=false;
+											}
 											break;
 										case 3:
 											break;
@@ -610,6 +671,7 @@ public class Principal {
 										switch(Integer.parseInt(opcion))
 										{
 										case 1:
+											
 											break;
 										case 2:
 											break;
